@@ -19,7 +19,7 @@
 
 Developers looking to integrate their blockchain in Ledger Live are invited to head to the [**Developer Portal**](https://developers.ledger.com) where they will find the section [**Blockchain Support**](https://developers.ledger.com/docs/coin/general-process). 
 
-## Installation
+## Installation 
 
 In order to interact with any package contained in this repository you will need to install the following:
 
