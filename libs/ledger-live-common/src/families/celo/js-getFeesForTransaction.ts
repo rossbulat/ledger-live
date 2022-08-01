@@ -1,6 +1,6 @@
 import type { Account } from "@ledgerhq/types-live";
 import { BigNumber } from "bignumber.js";
-import type { Transaction } from "./types";
+import type { CeloAccount, Transaction } from "./types";
 import { celoKit } from "./api/sdk";
 import { getVote } from "./logic";
 

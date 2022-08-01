@@ -1,4 +1,4 @@
-import { Transaction, TransactionStatus } from "./types";
+import { CeloAccount, Transaction, TransactionStatus } from "./types";
 import {
   AmountRequired,
   FeeNotLoaded,

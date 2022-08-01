@@ -1,4 +1,6 @@
 import type {
+  Account,
+  AccountRaw,
   TransactionCommon,
   TransactionCommonRaw,
   TransactionStatusCommon,
@@ -91,3 +93,7 @@ export type CeloPreloadData = {
 export type TransactionStatus = TransactionStatusCommon;
 
 export type TransactionStatusRaw = TransactionStatusCommonRaw;
+
+export type CeloAccount = Account & { celoResources: CeloResources };
+
+export type CeloAccountRaw = AccountRaw & { celoResources: CeloResourcesRaw };

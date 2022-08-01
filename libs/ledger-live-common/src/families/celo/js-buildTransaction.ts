@@ -1,7 +1,6 @@
-import type { Transaction } from "./types";
+import type { CeloAccount, Transaction } from "./types";
 import { CeloTx } from "@celo/connect";
 import { celoKit } from "./api/sdk";
-import { Account } from "@ledgerhq/types-live";
 import { BigNumber } from "bignumber.js";
 import { getVote } from "./logic";
 
