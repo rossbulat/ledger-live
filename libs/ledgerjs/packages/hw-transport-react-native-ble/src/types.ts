@@ -2,8 +2,8 @@
 // they are called global because they are not tied to a specific instance of the transport
 // but rather to static methods.
 export type GlobalBridgeEvent = {
-  event: "add" | "replace" | "status";
-  type: "PoweredOn" | "PoweredOff" | "new-devices" | "new-device";
+  event: "replace" | "status";
+  type: "PoweredOn" | "PoweredOff" | "new-devices";
   data: any;
 };
 
@@ -17,6 +17,7 @@ export type RunnerEvent = any;
 export type RawRunnerEvent = {
   event: "task";
   type:
+    | "runStart"
     | "runComplete"
     | "runError"
     | "runProgress"

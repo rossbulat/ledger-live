@@ -25,13 +25,13 @@ class HwTransportReactNativeBle: RCTEventEmitter {
     var rejectCallback: ((_ code: String, _ message: String, _ error: NSError?) -> Void)?
     var queueTask: Queue?
     var runnerTask: Runner?
-    
+
     override init() {
         super.init()
         print(BleTransport.shared)
         EventEmitter.sharedInstance.registerEventEmitter(eventEmitter: self)
     }
-    
+
     @objc func observeBluetooth() -> Void {
         BleTransport.shared.bluetoothAvailabilityCallback { available in
             EventEmitter.sharedInstance.dispatch(
@@ -43,7 +43,7 @@ class HwTransportReactNativeBle: RCTEventEmitter {
             )
         }
     }
-    
+
     @objc func listen(
         _ resolve: @escaping RCTPromiseResolveBlock,
         reject: RCTPromiseRejectBlock
@@ -52,19 +52,19 @@ class HwTransportReactNativeBle: RCTEventEmitter {
             reject(TransportError.bluetoothRequired.rawValue, "", nil)
             return
         }
-        
+
         DispatchQueue.main.async {
-            
+
             BleTransport.shared.scan(duration: 60.0) { discoveries in
                 let devices = discoveries.map{
-                    ExtraData(
+                    Device(
                         id: $0.peripheral.uuid.uuidString,
                         rssi: $0.rssi,
                         name: $0.peripheral.name,
                         serviceUUIDs: [$0.serviceUUID.uuidString]
                     )
                 }
-                
+
                 EventEmitter.sharedInstance.dispatch(
                     Payload(
                         event: Event.newDevices.rawValue,
@@ -75,11 +75,11 @@ class HwTransportReactNativeBle: RCTEventEmitter {
                     )
                 )
             } stopped: { _ in
-                
+
             }
         }
     }
-    
+
     @objc func stop(
         _ resolve: @escaping RCTPromiseResolveBlock,
         reject: RCTPromiseRejectBlock
@@ -91,11 +91,11 @@ class HwTransportReactNativeBle: RCTEventEmitter {
             }
         }
     }
-    
+
     @objc func isConnected(_ resolve: @escaping RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
         resolve(BleTransport.shared.isConnected)
     }
-    
+
     @objc func connect(
         _ uuid: String,
         resolve: @escaping RCTPromiseResolveBlock,
@@ -105,10 +105,10 @@ class HwTransportReactNativeBle: RCTEventEmitter {
             reject(TransportError.bluetoothRequired.rawValue, "", nil)
             return
         }
-        
+
         let peripheral = PeripheralIdentifier(uuid: UUID(uuidString: uuid)!, name: "")
         var consumed = false /// Callbacks can only be called once in rn
-        
+
         DispatchQueue.main.async {
             BleTransport.shared.connect(toPeripheralID: peripheral) {
                 /// Disconnect callback is called regardless of the original -connect- having resolved already
@@ -131,7 +131,7 @@ class HwTransportReactNativeBle: RCTEventEmitter {
             }
         }
     }
-    
+
     @objc func disconnect(
         _ resolve: @escaping RCTPromiseResolveBlock,
         reject: @escaping RCTPromiseRejectBlock
@@ -143,7 +143,7 @@ class HwTransportReactNativeBle: RCTEventEmitter {
                 })
             }
         }
-        
+
         /// Prevent race condition between organic disconnect (allow open app) and explicit disconnection below.
         DispatchQueue.main.asyncAfter(deadline: .now() + 3){
             if !BleTransport.shared.isConnected {
@@ -156,7 +156,7 @@ class HwTransportReactNativeBle: RCTEventEmitter {
             }
         }
     }
-    
+
     @objc func exchange(
         _ apdu: String,
         resolve: @escaping RCTPromiseResolveBlock,
@@ -166,9 +166,9 @@ class HwTransportReactNativeBle: RCTEventEmitter {
             reject(TransportError.deviceDisconnected.rawValue, "", nil)
             return
         }
-        
+
         self.rejectCallback = reject /// Get notified if the device disconnects while we wait
-        
+
         DispatchQueue.main.async {
             BleTransport.shared.exchange(apdu: APDU(raw: apdu)) { result in
                 switch result {
@@ -188,7 +188,7 @@ class HwTransportReactNativeBle: RCTEventEmitter {
             }
         }
     }
-    
+
     @objc func queue(_ rawQueue: String, endpoint: String) -> Void {
         if let queue = self.queueTask {
             // If the queue is stopped we create a new one
@@ -197,15 +197,15 @@ class HwTransportReactNativeBle: RCTEventEmitter {
                 return
             }
         }
-        
+
         self.queueTask = Queue(rawQueue: rawQueue, endpoint: endpoint)
-        
+
         /// While running a queue, if the device disconnects we wouldn't be notified because we are already
         /// dealing with a connected device and the callback will come from the -connect- from this file. In order
         /// to handle this eventuality, register here what to do in that case.
         self.rejectCallback = self.queueTask?.onDisconnect
     }
-    
+
     @objc func runner(_ endpoint: String) -> Void {
         self.runnerTask = Runner(
             endpoint: URL(string: endpoint)!,
@@ -232,13 +232,13 @@ class HwTransportReactNativeBle: RCTEventEmitter {
             )
         }
     }
-    
+
     @objc func onAppStateChange(
         _ awake: Bool
     ) -> Void {
         EventEmitter.sharedInstance.onAppStateChange(awake: awake)
     }
-    
+
     @objc open override func supportedEvents() -> [String] {
         return EventEmitter.sharedInstance.allEvents
     }

@@ -19,6 +19,7 @@ import kotlin.collections.ArrayList
 enum class RunnerAction {
     runStart,
     runProgress,
+    runBulkProgress,
     runSuccess,
     runComplete,
     runError,
@@ -98,11 +99,17 @@ class Runner(
             val progress: Double = (bulkSize - APDUQueue.size) / bulkSize.toDouble()
             onEvent(
                 RunnerAction.runProgress,
-                Arguments.fromBundle(bundleOf(Pair("progress", progress))),
+                Arguments.fromBundle(
+                    bundleOf(
+                        Pair("progress", progress),
+                        Pair("index", bulkSize - APDUQueue.size),
+                        Pair("total", bulkSize)
+                    )
+                ),
             )
             handleNextAPDU()
         } else {
-            val out = """"{"nonce":$nonce, "response":"success","data":\"$data\"}"""
+            val out = """{"nonce":$nonce, "response":"success","data":"$data"}"""
             Timber.d("$tag -> $out")
             socket.send(out)
         }

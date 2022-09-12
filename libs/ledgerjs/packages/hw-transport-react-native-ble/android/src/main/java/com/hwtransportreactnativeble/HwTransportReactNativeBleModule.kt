@@ -2,8 +2,11 @@ package com.hwtransportreactnativeble
 
 import com.facebook.react.bridge.*
 import com.hwtransportreactnativeble.tasks.Queue
+import com.hwtransportreactnativeble.tasks.Runner
+import com.hwtransportreactnativeble.tasks.RunnerAction
 import com.ledger.live.ble.BleManagerFactory
 import timber.log.Timber
+import java.net.URL
 import java.util.*
 import kotlin.concurrent.timerTask
 
@@ -16,6 +19,7 @@ class HwTransportReactNativeBleModule(reactContext: ReactApplicationContext) :
     private var bleManager = BleManagerFactory.newInstance(reactContext)
     private var eventEmitter = EventEmitter.getInstance(reactContext)
     private var queue: Queue? = null
+    private var runnerTask: Runner? = null
     private var planted: Boolean = false
 
     override fun getName(): String {
@@ -124,7 +128,7 @@ class HwTransportReactNativeBleModule(reactContext: ReactApplicationContext) :
     @ReactMethod
     fun disconnect(promise: Promise) {
         /// Prevent race condition between organic disconnect (allow open app) and explicit disconnection below.
-        
+
         pendingEvent = Timer()
         pendingEvent!!.schedule(
             timerTask() {
@@ -180,5 +184,32 @@ class HwTransportReactNativeBleModule(reactContext: ReactApplicationContext) :
 
         queue = Queue(rawQueue, endpoint, eventEmitter, bleManager)
     }
-}
 
+    @ReactMethod
+    fun runner(endpoint: String){
+        Timber.d("$tag: \t starting new runner $endpoint")
+
+        runnerTask = Runner(
+            URL(endpoint.replace("wss://", "https://")),
+            "",
+            bleManager,
+            { },
+            { action: RunnerAction, data: WritableMap ->
+                if (action == RunnerAction.runProgress) {
+                    eventEmitter.dispatch(com.facebook.react.bridge.Arguments.createMap().apply {
+                        putString("event", "task")
+                        putString("type", com.hwtransportreactnativeble.tasks.RunnerAction.runBulkProgress.toString())
+                        putMap("data", data)
+                    })
+                }
+            },
+            {
+                eventEmitter.dispatch(Arguments.createMap().apply {
+                    putString("event", "task")
+                    putString("type", RunnerAction.runComplete.toString())
+                    putMap("data", null)
+                })
+            }
+        );
+    }
+}
