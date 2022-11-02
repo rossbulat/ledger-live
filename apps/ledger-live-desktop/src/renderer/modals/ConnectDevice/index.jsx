@@ -3,7 +3,6 @@
 import React from "react";
 import { getEnv } from "@ledgerhq/live-common/env";
 import { createAction } from "@ledgerhq/live-common/hw/actions/app";
-import { createAction as createManagerAction } from "@ledgerhq/live-common/hw/actions/manager";
 import Modal, { ModalBody } from "~/renderer/components/Modal";
 import Box from "~/renderer/components/Box";
 import DeviceAction from "~/renderer/components/DeviceAction";
@@ -11,10 +10,8 @@ import { command } from "~/renderer/commands";
 import { mockedEventEmitter } from "~/renderer/components/debug/DebugMock";
 
 const connectAppExec = command("connectApp");
-const connectManagerExec = command("connectManager");
 
 const appAction = createAction(getEnv("MOCK") ? mockedEventEmitter : connectAppExec);
-const managerAction = createManagerAction(getEnv("MOCK") ? mockedEventEmitter : connectManagerExec);
 
 const ConnectDevice = () => {
   return (
@@ -33,10 +30,9 @@ const ConnectDevice = () => {
           render={() => (
             <Box alignItems={"center"} px={32}>
               <DeviceAction
-                action={data.appName ? appAction : managerAction}
-                request={data.appName ? { appName: data.appName } : null}
+                action={appAction}
+                request={{ appName: data.appName || "BOLOS" }}
                 onResult={res => {
-                  console.log(res);
                   data.onResult(res);
                   onClose();
                 }}

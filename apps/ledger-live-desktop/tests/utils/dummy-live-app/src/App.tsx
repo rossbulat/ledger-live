@@ -9,7 +9,7 @@ import "./App.css";
 
 global.Buffer = Buffer;
 
-const prettyJSON = (payload: any) => JSON.stringify(payload, null, 2);
+const prettyJSON = (payload: unknown) => JSON.stringify(payload, null, 2);
 
 /**
  * Wallet API Transport implementation
@@ -60,7 +60,8 @@ class TransportWalletAPI extends Transport {
   setScrambleKey() {}
 
   close(): Promise<void> {
-    return Promise.resolve();
+    // @ts-expect-error: _request is private but it's only for a test
+    return this.walletApi._request("device.close");
   }
 }
 
@@ -69,20 +70,20 @@ const App = () => {
   const api = useRef<LedgerLiveApi>();
   const transport = useRef<Transport>();
 
-  const [output, setOutput] = useState<any>(null);
+  const [output, setOutput] = useState<unknown>(null);
 
   // Instantiate the Ledger Live API on component mount
   useEffect(() => {
-    const llapi = new LedgerLiveApi(new WindowMessageTransport());
-    llapi.connect();
-    if (llapi) {
-      api.current = llapi;
+    const llApi = new LedgerLiveApi(new WindowMessageTransport());
+    llApi.connect();
+    if (llApi) {
+      api.current = llApi;
     }
 
     // Cleanup the Ledger Live API on component unmount
     return () => {
       api.current = undefined;
-      void llapi.disconnect();
+      llApi.disconnect();
     };
   }, []);
 
@@ -178,6 +179,11 @@ const App = () => {
     setOutput(res);
   };
 
+  const closeTransport = () => {
+    transport.current?.close();
+    transport.current = undefined;
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -212,8 +218,8 @@ const App = () => {
           <button onClick={sell} data-test-id="sell-button">
             Sell (Not yet implemented)
           </button>
-          <button onClick={getTransport()} data-test-id="get-manager-transport-button">
-            getManagerTransport
+          <button onClick={getTransport()} data-test-id="get-bolos-transport-button">
+            getBolosTransport
           </button>
           <button onClick={getDeviceInfo} data-test-id="get-device-info-button">
             getDeviceInfo
@@ -223,6 +229,9 @@ const App = () => {
           </button>
           <button onClick={ethGetAppConfiguration} data-test-id="eth-get-app-configuration-button">
             ethGetAppConfiguration
+          </button>
+          <button onClick={closeTransport} data-test-id="get-eth-transport-button">
+            closeTransport
           </button>
         </div>
         <pre className="output-container">{output ? prettyJSON(output) : ""}</pre>

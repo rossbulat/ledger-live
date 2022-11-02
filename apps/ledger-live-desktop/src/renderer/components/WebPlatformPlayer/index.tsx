@@ -5,6 +5,8 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { Subject } from "rxjs";
+import { first } from "rxjs/operators";
 
 import { UserRefusedOnDevice } from "@ledgerhq/errors";
 import { Account, AccountLike, Operation, SignedOperation } from "@ledgerhq/types-live";
@@ -33,7 +35,8 @@ import {
   usePlatformUrl,
 } from "@ledgerhq/live-common/platform/react";
 import trackingWrapper from "@ledgerhq/live-common/platform/tracking";
-import { Device } from "@ledgerhq/live-common/hw/actions/types";
+import { AppResult } from "@ledgerhq/live-common/hw/actions/app";
+import { BidirectionalEvent } from "@ledgerhq/live-common/hw/getTransport";
 
 import { openModal } from "../../actions/modals";
 import TrackPage from "../../analytics/TrackPage";
@@ -50,7 +53,6 @@ import {
   broadcastTransactionLogic,
   RequestAccountParams,
 } from "./LiveAppSDKLogic";
-import { getCurrentDevice } from "~/renderer/reducers/devices";
 import { command } from "~/renderer/commands";
 
 const tracking = trackingWrapper(track);
@@ -327,38 +329,43 @@ export default function WebPlatformPlayer({ manifest, onClose, inputs = {}, conf
     [accounts, dispatch, manifest],
   );
 
-  const device = useSelector(getCurrentDevice);
-  // const websocketBridge = useRef<Subscription>();
+  const transport = useRef<Subject<BidirectionalEvent>>();
 
-  // useEffect(() => {
-  //   return () => {
-  //     websocketBridge.current?.unsubscribe();
-  //   };
-  // }, []);
+  // Complete the subject when leaving the page
+  useEffect(() => {
+    return () => {
+      transport.current?.complete();
+    };
+  });
 
   const deviceGetTransport = useCallback(
     ({ appName }: { appName?: string }) => {
+      if (transport.current) {
+        return Promise.reject(new Error("Device already opened"));
+      }
+
       return new Promise((resolve, reject) =>
         dispatch(
           openModal("MODAL_CONNECT_DEVICE", {
             appName,
-            onResult: (device: Device) => {
-              if (!device) {
+            onResult: (result: AppResult) => {
+              if (!result.device) {
                 return reject(new Error("No device"));
               }
-              console.log("onResult: ", device);
-              // const { deviceId } = device;
-              // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // // @ts-ignore: command is using flow typings
-              // websocketBridge.current = command("websocketBridge")({ deviceId, origin }).subscribe({
-              //   complete: () => {
-              //     console.log("websocketBridge closed");
-              //   },
-              //   error: (error: unknown) => {
-              //     console.error("websocketBridge error: ", error);
-              //   },
-              // }) as Subscription;
-              // console.log(websocketBridge.current);
+              console.log("onResult: ", result);
+              const { deviceId } = result.device;
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore: command is using flow typings
+              transport.current = command("getTransport")({ deviceId }) as Subject<
+                BidirectionalEvent
+              >;
+
+              // Clean the ref on completion
+              transport.current.subscribe({
+                complete: () => {
+                  transport.current = undefined;
+                },
+              });
               resolve(true);
             },
             onCancel: (error: Error) => {
@@ -371,18 +378,40 @@ export default function WebPlatformPlayer({ manifest, onClose, inputs = {}, conf
     [dispatch],
   );
 
-  const deviceExchange = useCallback(
-    ({ apduHex }: { apduHex: string }) => {
-      if (!device) {
-        return Promise.reject(new Error("No device"));
-      }
-      const { deviceId } = device;
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore: command is using flow typings
-      return command("testApdu")({ apduHex, deviceId }).toPromise();
-    },
-    [device],
-  );
+  const deviceExchange = useCallback(({ apduHex }: { apduHex: string }) => {
+    if (!transport.current) {
+      return Promise.reject(new Error("No device opened"));
+    }
+
+    const subject$ = transport.current;
+
+    return new Promise((resolve, reject) => {
+      subject$.pipe(first(e => e.type === "device-response" || e.type === "error")).subscribe({
+        next: e => {
+          if (e.type === "device-response") {
+            return resolve({ responseHex: e.data });
+          }
+          if (e.type === "error") {
+            return reject(e.error || new Error("deviceExchange: unknown error"));
+          }
+        },
+        error: error => {
+          reject(error);
+        },
+      });
+      subject$.next({ type: "input-frame", apduHex });
+    });
+  }, []);
+
+  const deviceClose = useCallback(() => {
+    if (!transport.current) {
+      return Promise.reject(new Error("No device opened"));
+    }
+
+    transport.current.complete();
+
+    return Promise.resolve();
+  }, []);
 
   const handlers = useMemo(
     () => ({
@@ -397,6 +426,7 @@ export default function WebPlatformPlayer({ manifest, onClose, inputs = {}, conf
       "message.sign": signMessage,
       "device.getTransport": deviceGetTransport,
       "device.exchange": deviceExchange,
+      "device.close": deviceClose,
     }),
     [
       listAccounts,
@@ -410,6 +440,7 @@ export default function WebPlatformPlayer({ manifest, onClose, inputs = {}, conf
       signMessage,
       deviceGetTransport,
       deviceExchange,
+      deviceClose,
     ],
   );
 
