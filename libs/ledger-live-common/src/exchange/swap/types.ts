@@ -103,6 +103,39 @@ export type ProvidersResponseV4 = {
   providers: { [providerName: string]: TradeMethodGroup[] };
 };
 
+type ProviderPermutationCurrencyV5 = {
+  from?: boolean,
+  to?: boolean,
+  float?: boolean,
+  fixed?: boolean,
+}
+type ProviderPerCurrencyV5 = {
+  type: "per-currency",
+  from: boolean,
+  to: boolean,
+  float: boolean,
+  fixed: boolean,
+  currencies: { [currencyIndex: string]: ProviderPermutationCurrencyV5 },
+}
+export function isProviderPerCurrencyV5(o: any): o is ProviderPerCurrencyV5 {
+  return o.type === "per-currency";
+}
+
+type ProviderPermutationV5 = {
+  type: "permutations",
+  float: boolean,
+  fixed: boolean,
+  currencies: number[],
+}
+export function isProviderPermutationV5(o: any): o is ProviderPermutationV5 {
+  return o.type === "permutations";
+}
+
+export type ProvidersResponseV5 = {
+  currencies: { [currencyIndex: number]: string };
+  providers: { [providerName: string]: (ProviderPerCurrencyV5 | ProviderPermutationV5) };
+};
+
 type CheckQuoteOkStatus = {
   codeName: "RATE_VALID";
 };

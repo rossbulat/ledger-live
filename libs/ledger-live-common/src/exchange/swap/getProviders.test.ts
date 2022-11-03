@@ -225,10 +225,98 @@ const EXPECTED_RESULT_V4 = [
   },
 ];
 
+const EXPECTED_RESULT_V5 = [
+  {
+    provider: "changelly",
+    pairs: [
+      {
+        from: "bitcoin",
+        to: "zcash",
+        tradeMethod: "float",
+      },
+      {
+        from: "ethereum",
+        to: "bitcoin",
+        tradeMethod: "fixed",
+      },
+      {
+        from: "ethereum",
+        to: "zcash",
+        tradeMethod: "fixed",
+      },
+    ],
+  },
+  {
+    provider: "ftx",
+    pairs: [
+      {
+        from: "bitcoin",
+        to: "ethereum",
+        tradeMethod: "float",
+      },
+      {
+        from: "bitcoin",
+        to: "zcash",
+        tradeMethod: "float",
+      },
+      {
+        from: "bitcoin",
+        to: "ethereum_classic",
+        tradeMethod: "float",
+      },
+      {
+        from: "ethereum",
+        to: "bitcoin",
+        tradeMethod: "float",
+      },
+      {
+        from: "ethereum",
+        to: "zcash",
+        tradeMethod: "float",
+      },
+      {
+        from: "ethereum",
+        to: "ethereum_classic",
+        tradeMethod: "float",
+      },
+      {
+        from: "zcash",
+        to: "bitcoin",
+        tradeMethod: "float",
+      },
+      {
+        from: "zcash",
+        to: "ethereum",
+        tradeMethod: "float",
+      },
+      {
+        from: "zcash",
+        to: "ethereum_classic",
+        tradeMethod: "float",
+      },
+      {
+        from: "ethereum_classic",
+        to: "bitcoin",
+        tradeMethod: "float",
+      },
+      {
+        from: "ethereum_classic",
+        to: "ethereum",
+        tradeMethod: "float",
+      },
+      {
+        from: "ethereum_classic",
+        to: "zcash",
+        tradeMethod: "float",
+      },
+    ],
+  },
+];
+
 jest.mock("axios");
 const mockedAxios = jest.mocked(axios);
 
-describe("swap/getProviders", () => {
+describe("getProviders", () => {
   const DEFAULT_SWAP_API_BASE = getEnv("SWAP_API_BASE");
 
   afterAll(() => {
@@ -445,6 +533,84 @@ describe("swap/getProviders", () => {
       const res = await getProviders();
 
       expect(res).toEqual(EXPECTED_RESULT_V4);
+    });
+  });
+
+  describe("version 5", () => {
+    const data = {
+      "currencies":{
+        "1": "bitcoin",
+        "2": "ethereum",
+        "3": "zcash",
+        "4": "ethereum_classic",
+      },
+      "providers":{
+        "changelly":{
+          "type":"per-currency",
+          "from":true,
+          "to":true,
+          "float":true,
+          "fixed":false,
+          "currencies":{
+              "1":{}, // all defaults
+              "2":{"to":false, "float":false, "fixed":true},
+              "3":{"from":false}
+          }
+        },
+        "ftx":{
+          "type":"permutations",
+          "float":true,
+          "fixed":false,
+          "currencies":[1,2,3,4]
+        }
+      }
+    };
+
+    const resp = {
+      data,
+      status: 200,
+      statusText: "",
+      headers: {},
+      config: {},
+    };
+
+    beforeAll(() => {
+      // set SWAP_API_BASE
+      setEnv("SWAP_API_BASE", "https://swap.ledger.com/v5");
+    });
+
+    beforeEach(() => {
+      mockedAxios.mockResolvedValue(Promise.resolve(resp));
+    });
+
+    afterEach(() => {
+      mockedAxios.mockClear();
+    });
+
+    test("should be called with whitelist", async () => {
+      await getProviders();
+
+      expect(mockedAxios).toBeCalledWith(
+        expect.objectContaining({
+          params: expect.objectContaining({
+            whitelist: expect.any(Array),
+          }),
+        })
+      );
+    });
+
+    test("should throw error if no providers", async () => {
+      const emptyResp = { ...resp, data: { ...data, providers: {} } };
+
+      mockedAxios.mockResolvedValue(Promise.resolve(emptyResp));
+
+      await expect(getProviders).rejects.toThrow("SwapNoAvailableProviders");
+    });
+
+    test("should return list of providers with pairs", async () => {
+      const res = await getProviders();
+
+      expect(res).toEqual(EXPECTED_RESULT_V5);
     });
   });
 });
