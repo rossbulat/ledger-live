@@ -103,37 +103,39 @@ export type ProvidersResponseV4 = {
   providers: { [providerName: string]: TradeMethodGroup[] };
 };
 
-type ProviderPermutationCurrencyV5 = {
-  from?: boolean,
-  to?: boolean,
-  float?: boolean,
-  fixed?: boolean,
-}
-type ProviderPerCurrencyV5 = {
-  type: "per-currency",
-  from: boolean,
-  to: boolean,
-  float: boolean,
-  fixed: boolean,
-  currencies: { [currencyIndex: string]: ProviderPermutationCurrencyV5 },
-}
-export function isProviderPerCurrencyV5(o: any): o is ProviderPerCurrencyV5 {
+export type PerCurrencyProviderCurrencyV5 = {
+  from?: boolean;
+  to?: boolean;
+  float?: boolean;
+  fixed?: boolean;
+};
+export type PerCurrencyProviderV5 = {
+  type: "per-currency";
+  from: boolean;
+  to: boolean;
+  float: boolean;
+  fixed: boolean;
+  currencies: { [currencyIndex: string]: PerCurrencyProviderCurrencyV5 };
+};
+export function isPerCurrencyProviderV5(o: any): o is PerCurrencyProviderV5 {
   return o.type === "per-currency";
 }
 
-type ProviderPermutationV5 = {
-  type: "permutations",
-  float: boolean,
-  fixed: boolean,
-  currencies: number[],
-}
-export function isProviderPermutationV5(o: any): o is ProviderPermutationV5 {
+export type PermutationProviderV5 = {
+  type: "permutations";
+  float: boolean;
+  fixed: boolean;
+  currencies: number[];
+};
+export function isPermutationProviderV5(o: any): o is PermutationProviderV5 {
   return o.type === "permutations";
 }
 
 export type ProvidersResponseV5 = {
   currencies: { [currencyIndex: number]: string };
-  providers: { [providerName: string]: (ProviderPerCurrencyV5 | ProviderPermutationV5) };
+  providers: {
+    [providerName: string]: PerCurrencyProviderV5 | PermutationProviderV5;
+  };
 };
 
 type CheckQuoteOkStatus = {

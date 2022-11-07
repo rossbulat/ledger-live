@@ -8,8 +8,17 @@ import {
   getSwapAPIVersion,
 } from "./";
 import { mockGetProviders } from "./mock";
-import type { GetProviders, ProvidersResponseV4, ProvidersResponseV5, AvailableProviderV3, Pair } from "./types";
-import { isProviderPerCurrencyV5, isProviderPermutationV5 } from "./types";
+import type {
+  GetProviders,
+  ProvidersResponseV4,
+  ProvidersResponseV5,
+  PermutationProviderV5,
+  PerCurrencyProviderV5,
+  PerCurrencyProviderCurrencyV5,
+  AvailableProviderV3,
+  Pair,
+} from "./types";
+import { isPermutationProviderV5 } from "./types";
 
 const getProviders: GetProviders = async () => {
   if (getEnv("MOCK")) return mockGetProviders();
@@ -24,7 +33,7 @@ const getProviders: GetProviders = async () => {
       qs.stringify(params, { arrayFormat: "comma" }),
   });
 
-  switch(version) {
+  switch (version) {
     case 4: {
       return parseV4(res.data);
     }
@@ -41,7 +50,7 @@ const getProviders: GetProviders = async () => {
 };
 
 function parseV4(response: ProvidersResponseV4): AvailableProviderV3[] {
-  raiseIfNoProviders(response)
+  raiseIfNoProviders(response);
 
   return Object.entries(response.providers).flatMap(([provider, groups]) => ({
     provider: provider,
@@ -59,52 +68,111 @@ function parseV4(response: ProvidersResponseV4): AvailableProviderV3[] {
   }));
 }
 
+type IdsToCurrencies = { [index: string]: string };
 function parseV5(response: ProvidersResponseV5): AvailableProviderV3[] {
-  raiseIfNoProviders(response)
+  raiseIfNoProviders(response);
 
-  return Object.entries(response.providers).map( provider => {
-    const providerCurrency = provider[1]
-    let pairs: Pair[] = []
+  const availableCurrencies = response.currencies as IdsToCurrencies;
 
-    if (isProviderPermutationV5(providerCurrency)) {
-      const currencies = providerCurrency.currencies.map( currencyIdx => response.currencies[currencyIdx])
-      const isFloat = providerCurrency.float;
-      const isFixed = providerCurrency.fixed;
-  
-      currencies.forEach( fromCurrency => {
-        pairs = scanCurrenciesForPairs(currencies, pairs, fromCurrency, isFloat, isFixed)
-      });
+  return Object.entries(response.providers).map((provider) => {
+    const providerName = provider[0];
+    const providerInfo = provider[1];
+    let pairs: Pair[] = [];
+
+    if (isPermutationProviderV5(providerInfo)) {
+      pairs = extractPairsFromPermutationProvider(
+        providerInfo,
+        availableCurrencies
+      );
     } else {
-      const toCurrencies = Object.entries(providerCurrency.currencies)
-        .filter( currencyInfo => currencyInfo[1].to ?? providerCurrency.to )
-        .map( currencyInfo => response.currencies[currencyInfo[0]])
-
-      Object.entries(providerCurrency.currencies)
-        .filter( currencyInfo => currencyInfo[1].from ?? providerCurrency.from )
-        .forEach( currencyInfo => {
-          const fromCurrency = response.currencies[currencyInfo[0]]
-          const isFloat = currencyInfo[1].float ?? providerCurrency.float;
-          const isFixed = currencyInfo[1].fixed ?? providerCurrency.fixed;
-
-          pairs = scanCurrenciesForPairs(toCurrencies, pairs, fromCurrency, isFloat, isFixed)
-        });
+      pairs = extractPairsFromPerCurrencyProvider(
+        providerInfo,
+        availableCurrencies
+      );
     }
 
     return {
-      provider: provider[0],
-      pairs
-    }
+      provider: providerName,
+      pairs,
+    };
   });
 }
 
-function scanCurrenciesForPairs(toCurrencies: string[], pairs: Pair[], fromCurrency: string, isFloat: boolean, isFixed: boolean): Pair[] {
-  toCurrencies.forEach( toCurrency => {
-    pairs = concatPair(pairs, fromCurrency, toCurrency, isFloat, isFixed)
-  });
-  return pairs;
+function extractPairsFromPermutationProvider(
+  providerInfo: PermutationProviderV5,
+  availableCurrencies: IdsToCurrencies
+): Pair[] {
+  const providerCurrencies = providerInfo.currencies.map(
+    (currencyIdx) => availableCurrencies[currencyIdx]
+  );
+  const isFloat = providerInfo.float;
+  const isFixed = providerInfo.fixed;
+
+  return providerCurrencies.reduce(
+    (pairs: Pair[], fromCurrency: string) =>
+      scanCurrenciesForPairs(
+        providerCurrencies,
+        pairs,
+        fromCurrency,
+        isFloat,
+        isFixed
+      ),
+    []
+  );
 }
 
-function concatPair(pairs: Pair[], fromCurrency: string, toCurrency: string, isFloat: boolean, isFixed: boolean): Pair[] {
+function extractPairsFromPerCurrencyProvider(
+  providerInfo: PerCurrencyProviderV5,
+  availableCurrencies: IdsToCurrencies
+): Pair[] {
+  const toCurrencies = Object.entries(providerInfo.currencies)
+    .filter((currencyInfo) => currencyInfo[1].to ?? providerInfo.to)
+    .map((currencyInfo) => availableCurrencies[currencyInfo[0]]);
+
+  return Object.entries(providerInfo.currencies)
+    .filter((currencyInfo) => currencyInfo[1].from ?? providerInfo.from)
+    .reduce(
+      (
+        pairs: Pair[],
+        currencyInfo: [string, PerCurrencyProviderCurrencyV5]
+      ) => {
+        const fromCurrency = availableCurrencies[currencyInfo[0]];
+        const isFloat = currencyInfo[1].float ?? providerInfo.float;
+        const isFixed = currencyInfo[1].fixed ?? providerInfo.fixed;
+
+        return scanCurrenciesForPairs(
+          toCurrencies,
+          pairs,
+          fromCurrency,
+          isFloat,
+          isFixed
+        );
+      },
+      []
+    );
+}
+
+function scanCurrenciesForPairs(
+  toCurrencies: string[],
+  pairs: Pair[],
+  fromCurrency: string,
+  isFloat: boolean,
+  isFixed: boolean
+): Pair[] {
+  return toCurrencies.reduce(
+    (pairs: Pair[], toCurrency: string) =>
+      concatPair(pairs, fromCurrency, toCurrency, isFloat, isFixed),
+    pairs
+  );
+}
+
+function concatPair(
+  pairs: Pair[],
+  fromCurrency: string,
+  toCurrency: string,
+  isFloat: boolean,
+  isFixed: boolean
+): Pair[] {
   if (fromCurrency === toCurrency) return pairs;
 
   if (isFloat) {
@@ -113,8 +181,8 @@ function concatPair(pairs: Pair[], fromCurrency: string, toCurrency: string, isF
       {
         from: fromCurrency,
         to: toCurrency,
-        tradeMethod: "float"
-      }
+        tradeMethod: "float",
+      },
     ];
   }
   if (isFixed) {
@@ -123,14 +191,16 @@ function concatPair(pairs: Pair[], fromCurrency: string, toCurrency: string, isF
       {
         from: fromCurrency,
         to: toCurrency,
-        tradeMethod: "fixed"
-      }
+        tradeMethod: "fixed",
+      },
     ];
   }
   return pairs;
 }
 
-function raiseIfNoProviders(response: ProvidersResponseV4 | ProvidersResponseV5) {
+function raiseIfNoProviders(
+  response: ProvidersResponseV4 | ProvidersResponseV5
+) {
   if (!response.providers || !Object.keys(response.providers).length) {
     throw new SwapNoAvailableProviders();
   }
