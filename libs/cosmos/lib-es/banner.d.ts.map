@@ -1,0 +1,1 @@
+{"version":3,"file":"banner.d.ts","sourceRoot":"","sources":["../src/banner.ts"],"names":[],"mappings":"AAGA,OAAO,KAAK,EAAE,aAAa,EAAE,mBAAmB,EAAE,MAAM,SAAS,CAAC;AAElE,MAAM,WAAW,kBAAkB;IACjC,OAAO,EAAE,OAAO,CAAC;IACjB,UAAU,EAAE,OAAO,CAAC;IACpB,mBAAmB,EAAE,MAAM,CAAC;IAC5B,eAAe,EAAE,mBAAmB,GAAG,SAAS,CAAC;CAClD;AAED,wBAAgB,qBAAqB,CACnC,OAAO,EAAE,aAAa,GACrB,kBAAkB,CAiEpB"}

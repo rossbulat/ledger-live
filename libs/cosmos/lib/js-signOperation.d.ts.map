@@ -1,0 +1,1 @@
+{"version":3,"file":"js-signOperation.d.ts","sourceRoot":"","sources":["../src/js-signOperation.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAiB,WAAW,EAAE,MAAM,SAAS,CAAC;AAE1D,OAAO,EAAE,UAAU,EAAE,MAAM,MAAM,CAAC;AAQlC,OAAO,KAAK,EACV,OAAO,EAGP,kBAAkB,EACnB,MAAM,sBAAsB,CAAC;AAI9B,QAAA,MAAM,aAAa;aAKR,OAAO;cACN,GAAG;iBACA,WAAW;MACtB,WAAW,kBAAkB,CAoK9B,CAAC;AAqBJ,eAAe,aAAa,CAAC"}

@@ -276,6 +276,7 @@ export type AccountRaw = {
   swapHistory?: SwapOperationRaw[];
   syncHash?: string;
   nfts?: ProtoNFTRaw[];
+  toAccount?: (Account) => Account;
 };
 
 /** */

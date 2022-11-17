@@ -1,0 +1,1 @@
+{"version":3,"file":"color.js","sourceRoot":"","sources":["../../src/currencies/color.ts"],"names":[],"mappings":"AAEA,MAAM,CAAC,IAAM,gBAAgB,GAAG,UAAC,QAAkB;IACjD,QAAQ,QAAQ,CAAC,IAAI,EAAE;QACrB,KAAK,gBAAgB;YACnB,OAAO,QAAQ,CAAC,KAAK,CAAC;QAExB,KAAK,eAAe;YAClB,OAAO,QAAQ,CAAC,cAAc,CAAC,KAAK,CAAC;QAEvC;YACE,OAAO,MAAM,CAAC;KACjB;AACH,CAAC,CAAC"}

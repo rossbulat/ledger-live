@@ -6,3 +6,5 @@ packages:
   - "libs/ui/packages/*"
   - "libs/ledger-live-common/tools"
   - "tools/**"
+  - "libs/ledger-common"
+  - "libs/cosmos"

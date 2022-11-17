@@ -1,0 +1,33 @@
+import type { Account, Operation, SubAccount } from "@ledgerhq/types-live";
+export declare function shouldRetainPendingOperation(account: Account, op: Operation): boolean;
+export declare const addPendingOperation: (account: Account, operation: Operation) => {
+    type: "Account";
+    id: string;
+    seedIdentifier: string;
+    xpub?: string | undefined;
+    derivationMode: string;
+    index: number;
+    freshAddress: string;
+    freshAddressPath: string;
+    freshAddresses: import("@ledgerhq/types-live").Address[];
+    name: string;
+    starred: boolean;
+    used: boolean;
+    balance: import("bignumber.js").BigNumber;
+    spendableBalance: import("bignumber.js").BigNumber;
+    creationDate: Date;
+    blockHeight: number;
+    currency: import("@ledgerhq/types-cryptoassets").CryptoCurrency;
+    unit: import("@ledgerhq/types-cryptoassets").Unit;
+    operationsCount: number;
+    operations: Operation[];
+    pendingOperations: Operation[];
+    lastSyncDate: Date;
+    endpointConfig?: string | null | undefined;
+    subAccounts?: SubAccount[] | undefined;
+    balanceHistoryCache: import("@ledgerhq/types-live").BalanceHistoryCache;
+    swapHistory: import("@ledgerhq/types-live/lib/swap").SwapOperation[];
+    syncHash?: string | undefined;
+    nfts?: import("@ledgerhq/types-live").ProtoNFT[] | undefined;
+};
+//# sourceMappingURL=pending.d.ts.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"js-getTransactionStatus.js","sourceRoot":"","sources":["../../src/osmosis/js-getTransactionStatus.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,8BAA8B,EAAE,MAAM,4BAA4B,CAAC;AAC5E,OAAO,EAAE,UAAU,EAAE,MAAM,WAAW,CAAC;AAEvC,IAAM,+BAA+B,GAAG,IAAI,8BAA8B,CAAC;IACzE,GAAG,EAAE,UAAU;IACf,8BAA8B,EAAE,aAAa;CAC9C,CAAC,CAAC;AAEH,eAAe,+BAA+B,CAAC,oBAAoB,CAAC"}

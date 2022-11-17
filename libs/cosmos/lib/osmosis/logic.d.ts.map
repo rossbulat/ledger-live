@@ -1,0 +1,1 @@
+{"version":3,"file":"logic.d.ts","sourceRoot":"","sources":["../../src/osmosis/logic.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,OAAO,EAAE,MAAM,sBAAsB,CAAC;AACpD,OAAO,EAAE,SAAS,EAAE,MAAM,cAAc,CAAC;AAOzC,wBAAgB,WAAW,CAAC,OAAO,EAAE,OAAO,GAAG,OAAO,CAGrD;AAED,wBAAgB,yBAAyB,CACvC,OAAO,EAAE,OAAO,EAChB,gBAAgB,EAAE,MAAM,GACvB,SAAS,CASX"}

@@ -1,0 +1,22 @@
+import type { SwapOperation, SwapOperationRaw } from "../types";
+import type { Account, AccountLike, AccountRaw, AccountRawLike, BalanceHistory, BalanceHistoryRaw, ChildAccount, ChildAccountRaw, Operation, OperationRaw, ProtoNFT, ProtoNFTRaw, SubAccount, SubAccountRaw, TokenAccount, TokenAccountRaw } from "@ledgerhq/types-live";
+export declare function toBalanceHistoryRaw(b: BalanceHistory): BalanceHistoryRaw;
+export declare function fromBalanceHistoryRaw(b: BalanceHistoryRaw): BalanceHistory;
+export declare const toOperationRaw: ({ date, value, fee, subOperations, internalOperations, nftOperations, extra, id, hash, type, senders, recipients, blockHeight, blockHash, transactionSequenceNumber, accountId, hasFailed, contract, operator, standard, tokenId, }: Operation, preserveSubOperation?: boolean) => OperationRaw;
+export declare const inferSubOperations: (txHash: string, subAccounts: SubAccount[]) => Operation[];
+export declare const fromOperationRaw: ({ date, value, fee, extra, subOperations, internalOperations, nftOperations, id, hash, type, senders, recipients, blockHeight, blockHash, transactionSequenceNumber, hasFailed, contract, operator, standard, tokenId, }: OperationRaw, accountId: string, subAccounts?: SubAccount[] | null | undefined) => Operation;
+export declare function fromSwapOperationRaw(raw: SwapOperationRaw): SwapOperation;
+export declare function toSwapOperationRaw(so: SwapOperation): SwapOperationRaw;
+export declare function fromTokenAccountRaw(raw: TokenAccountRaw): TokenAccount;
+export declare function toTokenAccountRaw(ta: TokenAccount): TokenAccountRaw;
+export declare function fromChildAccountRaw(raw: ChildAccountRaw): ChildAccount;
+export declare function toChildAccountRaw(ca: ChildAccount): ChildAccountRaw;
+export declare function fromSubAccountRaw(raw: SubAccountRaw): SubAccount;
+export declare function toSubAccountRaw(subAccount: SubAccount): SubAccountRaw;
+export declare function fromAccountLikeRaw(rawAccountLike: AccountRawLike): AccountLike;
+export declare function toAccountLikeRaw(accountLike: AccountLike): AccountRawLike;
+export declare function fromAccountRaw(rawAccount: AccountRaw): Account;
+export declare function toAccountRaw(account: Account): AccountRaw;
+export declare function toNFTRaw({ id, tokenId, amount, contract, standard, currencyId, metadata, }: ProtoNFT): ProtoNFTRaw;
+export declare function fromNFTRaw({ id, tokenId, amount, contract, standard, currencyId, metadata, }: ProtoNFTRaw): ProtoNFT;
+//# sourceMappingURL=serialization.d.ts.map

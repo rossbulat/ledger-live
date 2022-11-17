@@ -1,0 +1,1 @@
+{"version":3,"file":"js-buildTransaction.d.ts","sourceRoot":"","sources":["../src/js-buildTransaction.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,WAAW,EAAE,MAAM,SAAS,CAAC;AAiBrD,eAAO,MAAM,gBAAgB,YAClB,aAAa,eACT,WAAW,KACvB,QAAQ,GAAG,CA+Jb,CAAC;AAEF,eAAO,MAAM,oBAAoB,YACtB,aAAa,eACT,WAAW,UAChB,GAAG,mBACM,GAAG,aACT,UAAU,KACpB,QAAQ,GAAG,CA6Cb,CAAC;AAEF,eAAe,gBAAgB,CAAC"}

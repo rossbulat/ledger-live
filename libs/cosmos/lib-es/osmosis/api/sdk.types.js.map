@@ -1,0 +1,1 @@
+{"version":3,"file":"sdk.types.js","sourceRoot":"","sources":["../../../src/osmosis/api/sdk.types.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,IAAM,0BAA0B,GAAG;IACxC,4FAA4F;IAC5F,2BAA2B;IAC3B,IAAI,EAAE,MAAM;IACZ,SAAS,EAAE,WAAW;IACtB,QAAQ,EAAE,UAAU;IACpB,UAAU,EAAE,kBAAkB;IAC9B,UAAU,EAAE,YAAY;IACxB,MAAM,EAAE,2BAA2B;CACpC,CAAC;AAEF,MAAM,CAAC,IAAM,eAAe,GAAG,OAAO,CAAC"}
