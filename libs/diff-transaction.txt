@@ -1,0 +1,41 @@
+diff ledger-live-common/src/transaction/deviceTransactionConfig.ts ledger-common/src/transaction/deviceTransactionConfig.ts
+1,5d0
+< import perFamily from "../generated/deviceTransactionConfig";
+< import type { ExtraDeviceTransactionField } from "../generated/deviceTransactionConfig";
+< import type { Transaction, TransactionStatus } from "../generated/types";
+< import { getMainAccount } from "../account";
+< import type { Account, AccountLike } from "@ledgerhq/types-live";
+28,41d22
+< export type DeviceTransactionField =
+<   | CommonDeviceTransactionField
+<   | ExtraDeviceTransactionField;
+< export function getDeviceTransactionConfig(arg: {
+<   account: AccountLike;
+<   parentAccount: Account | null | undefined;
+<   transaction: Transaction;
+<   status: TransactionStatus;
+< }): Array<DeviceTransactionField> {
+<   const mainAccount = getMainAccount(arg.account, arg.parentAccount);
+<   const f = perFamily[mainAccount.currency.family];
+<   if (!f) return [];
+<   return f(arg);
+< }
+
+
+diff ledger-live-common/src/transaction/index.ts ledger-common/src/transaction/index.ts
+0a1,2
+> import { Account, TransactionCommon } from "@ledgerhq/types-live";
+> 
+2d3
+< export * from "./signOperation";
+4,11d4
+< import type {
+<   Transaction,
+<   TransactionRaw,
+<   TransactionStatus,
+<   TransactionStatusRaw,
+< } from "../generated/types";
+< import transactionModulePerFamily from "../generated/transaction";
+< import type { Account } from "@ledgerhq/types-live";
+Only in ledger-live-common/src/transaction: signOperation.ts
+Only in ledger-live-common/src/transaction: status.ts

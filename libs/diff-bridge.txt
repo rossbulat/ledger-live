@@ -1,0 +1,135 @@
+Only in ledger-live-common/src/bridge: cache.ts
+Only in ledger-live-common/src/bridge: impl.ts
+Only in ledger-live-common/src/bridge: index.ts
+diff ledger-live-common/src/bridge/jsHelpers.ts ledger-common/src/bridge/jsHelpers.ts
+6a7,15
+> import type {
+>   Account,
+>   AccountBridge,
+>   CurrencyBridge,
+>   Operation,
+>   ProtoNFT,
+>   ScanAccountEvent,
+>   SyncConfig,
+> } from "@ledgerhq/types-live";
+31c40
+< import getAddress from "../hw/getAddress";
+---
+> import getAddressWrapper from "../hw/getAddress";
+35,43c44
+< import type {
+<   Account,
+<   AccountBridge,
+<   CurrencyBridge,
+<   Operation,
+<   ProtoNFT,
+<   ScanAccountEvent,
+<   SyncConfig,
+< } from "@ledgerhq/types-live";
+---
+> import { Resolver } from "../hw/getAddress/types";
+271,288c272,282
+< const iterateResultWithAddressDerivation: IterateResult = async ({
+<   transport,
+<   index,
+<   derivationsCache,
+<   derivationScheme,
+<   derivationMode,
+<   currency,
+< }) => {
+<   let res;
+<   const freshAddressPath = runDerivationScheme(derivationScheme, currency, {
+<     account: index,
+<   });
+<   res = derivationsCache[freshAddressPath];
+<   if (!res) {
+<     res = await getAddress(transport, {
+<       currency,
+<       path: freshAddressPath,
+<       derivationMode,
+---
+> const defaultIterateResultBuilder2 = (getAddressFn: Resolver) => () =>
+>   Promise.resolve(async ({
+>     transport,
+>     index,
+>     derivationsCache,
+>     derivationScheme,
+>     derivationMode,
+>     currency,
+>   }): Promise<Result | null> => {
+>     const freshAddressPath = runDerivationScheme(derivationScheme, currency, {
+>       account: index,
+290,296c284,294
+<     derivationsCache[freshAddressPath] = res;
+<   }
+<   return res;
+< };
+< 
+< const defaultIterateResultBuilder = () =>
+<   Promise.resolve(iterateResultWithAddressDerivation);
+---
+>     let res = derivationsCache[freshAddressPath];
+>     if (!res) {
+>       res = await getAddressWrapper(getAddressFn!)(transport, {
+>         currency,
+>         path: freshAddressPath,
+>         derivationMode,
+>       });
+>       derivationsCache[freshAddressPath] = res;
+>     }
+>     return res as Result;
+>   });
+301d298
+<     buildIterateResult = defaultIterateResultBuilder,
+302a300
+>     buildIterateResult,
+304a303
+>     getAddressFn: (transport: Transport, opts: GetAddressOptions) => Promise<Result>;
+306,308d304
+<     getAddressFn?: (
+<       transport: Transport
+<     ) => (opts: GetAddressOptions) => Promise<Result>;
+448a445,449
+>         // STP: to fix
+>         if (buildIterateResult === undefined) {
+>           buildIterateResult = defaultIterateResultBuilder2(getAddressFn)
+>         }
+> 
+451,453d451
+<             const getAddr = getAddressFn
+<               ? getAddressFn(transport)
+<               : (opts) => getAddress(transport, opts);
+470,474c468,475
+<                   result = await getAddr({
+<                     currency,
+<                     path,
+<                     derivationMode,
+<                   });
+---
+>                   result = await getAddressFn(
+>                     transport,
+>                     {
+>                       currency,
+>                       path,
+>                       derivationMode,
+>                     }
+>                   );
+507c508,509
+<               const iterateResult = await buildIterateResult({
+---
+>               // STP: to fix
+>               const iterateResult = await buildIterateResult!({
+563c565,567
+< export function makeAccountBridgeReceive({
+---
+> 
+> export function makeAccountBridgeReceive(
+>   getAddressFn: Resolver, {
+601c605
+<         getAddress(transport, arg).then((r) => {
+---
+>         getAddressWrapper(getAddressFn)(transport, arg).then((r) => {
+Only in ledger-live-common/src/bridge: mockHelpers.ts
+Only in ledger-live-common/src/bridge: react
+Only in ledger-live-common/src/bridge: useBridgeTransaction.test.ts
+Only in ledger-live-common/src/bridge: useBridgeTransaction.ts

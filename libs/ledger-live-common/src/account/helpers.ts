@@ -27,13 +27,13 @@ import { CosmosAccount } from "../families/cosmos/types";
 // by convention, a main account is the top level account
 // in case of an Account is the account itself
 // in case of a TokenAccount it's the parentAccount
-export const getMainAccount = (
-  account: AccountLike,
-  parentAccount?: Account | null | undefined
-): Account => {
+export const getMainAccount = <T extends Account>(
+  account: T | SubAccount,
+  parentAccount?: T | null | undefined
+): T => {
   const mainAccount = account.type === "Account" ? account : parentAccount;
   invariant(mainAccount, "an account is expected");
-  return mainAccount as Account;
+  return mainAccount as T;
 };
 
 export const getAccountCurrency = (

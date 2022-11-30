@@ -1,0 +1,31 @@
+Only in ledger-live-common/src/currencies: __snapshots__
+Only in ledger-live-common/src/currencies: helpers.test.ts
+Only in ledger-live-common/src/currencies: helpers.ts
+diff ledger-live-common/src/currencies/index.ts ledger-common/src/currencies/index.ts
+4,10d3
+<   sortByMarketcap,
+<   getMarketcapTickers,
+<   useMarketcapTickers,
+<   currenciesByMarketcap,
+<   useCurrenciesByMarketcap,
+< } from "./sortByMarketcap";
+< import {
+33c26
+<   addTokens,
+---
+>   // addTokens,
+36d28
+< export * from "./helpers";
+54,58d45
+<   sortByMarketcap,
+<   getMarketcapTickers,
+<   useMarketcapTickers,
+<   currenciesByMarketcap,
+<   useCurrenciesByMarketcap,
+92c79
+<   addTokens,
+---
+>   // addTokens,
+Only in ledger-live-common/src/currencies: react.ts
+Only in ledger-live-common/src/currencies: sortByMarketcap.test.ts
+Only in ledger-live-common/src/currencies: sortByMarketcap.ts
