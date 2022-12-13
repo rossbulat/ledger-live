@@ -76,10 +76,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 exports.__esModule = true;
 exports.defaultCosmosAPI = exports.CosmosAPI = void 0;
-var env_1 = require("@ledgerhq/common/lib/env");
+var env_1 = require("@ledgerhq/ledger-common/lib/env");
 var bignumber_js_1 = __importDefault(require("bignumber.js"));
-var network_1 = __importDefault(require("@ledgerhq/common/lib/network"));
-var operation_1 = require("@ledgerhq/common/lib/operation");
+var network_1 = __importDefault(require("@ledgerhq/ledger-common/lib/network"));
+var operation_1 = require("@ledgerhq/ledger-common/lib/operation");
 var defaultEndpoint = (0, env_1.getEnv)("API_COSMOS_BLOCKCHAIN_EXPLORER_API_ENDPOINT").replace(/\/$/, "");
 var CosmosAPI = /** @class */ (function () {
     function CosmosAPI() {

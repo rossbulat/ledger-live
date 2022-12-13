@@ -70,10 +70,10 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
-import { getEnv } from "@ledgerhq/common/lib/env";
+import { getEnv } from "@ledgerhq/ledger-common/lib/env";
 import BigNumber from "bignumber.js";
-import network from "@ledgerhq/common/lib/network";
-import { patchOperationWithHash } from "@ledgerhq/common/lib/operation";
+import network from "@ledgerhq/ledger-common/lib/network";
+import { patchOperationWithHash } from "@ledgerhq/ledger-common/lib/operation";
 var defaultEndpoint = getEnv("API_COSMOS_BLOCKCHAIN_EXPLORER_API_ENDPOINT").replace(/\/$/, "");
 var CosmosAPI = /** @class */ (function () {
     function CosmosAPI() {

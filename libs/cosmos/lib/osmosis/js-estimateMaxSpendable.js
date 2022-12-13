@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 exports.__esModule = true;
 var bignumber_js_1 = require("bignumber.js");
-var account_1 = require("@ledgerhq/common/lib/account");
+var account_1 = require("@ledgerhq/ledger-common/lib/account");
 var js_getFeesForTransaction_1 = __importDefault(require("./js-getFeesForTransaction"));
 /**
  * Returns the maximum possible amount for transaction, considering fees

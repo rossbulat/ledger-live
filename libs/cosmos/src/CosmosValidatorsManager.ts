@@ -1,7 +1,7 @@
-import network from "@ledgerhq/common/lib/network";
+import network from "@ledgerhq/ledger-common/lib/network";
 import { log } from "@ledgerhq/logs";
-import { EnvName, EnvValue, getEnv } from "@ledgerhq/common/lib/env";
-import { makeLRUCache } from "@ledgerhq/common/lib/cache";
+import { EnvName, EnvValue, getEnv } from "@ledgerhq/ledger-common/lib/env";
+import { makeLRUCache } from "@ledgerhq/ledger-common/lib/cache";
 import type { CosmosValidatorItem, CosmosRewardsState } from "./types";
 import type { CryptoCurrency } from "@ledgerhq/types-cryptoassets";
 

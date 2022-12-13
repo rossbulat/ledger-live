@@ -42,7 +42,7 @@ import signOperation from "../js-signOperation";
 import { sync, scanAccounts } from "../js-synchronisation";
 import updateTransaction from "../js-updateTransaction";
 import cosmosValidatorsManager from "../validators";
-import { makeAccountBridgeReceive } from "@ledgerhq/common/lib/bridge/jsHelpers";
+import { makeAccountBridgeReceive } from "@ledgerhq/ledger-common/lib/bridge/jsHelpers";
 import { defaultCosmosAPI } from "../api/Cosmos";
 import getAddress from "../hw-getAddress";
 import { asSafeCosmosPreloadData, setCosmosPreloadData, } from "../preloadedData";

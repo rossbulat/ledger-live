@@ -1,0 +1,1 @@
+{"version":3,"file":"tron.d.ts","sourceRoot":"","sources":["../../src/signTransaction/tron.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,8BAA8B,CAAC;AAEnE,OAAO,SAAS,MAAM,wBAAwB,CAAC;mCAEnC,cAAc,aACb,SAAS,QACd,MAAM,SACL,OAAO,MAAM,EAAE,GAAG,CAAC;AAJ5B,wBAaE"}

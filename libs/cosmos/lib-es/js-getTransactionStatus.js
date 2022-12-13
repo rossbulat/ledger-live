@@ -51,7 +51,7 @@ var __read = (this && this.__read) || function (o, n) {
     return ar;
 };
 import { AmountRequired, FeeNotLoaded, InvalidAddress, InvalidAddressBecauseDestinationIsAlsoSource, NotEnoughBalance, RecipientRequired, RecommendUndelegation, } from "@ledgerhq/errors";
-import { ClaimRewardsFeesWarning, CosmosDelegateAllFundsWarning, CosmosRedelegationInProgress, CosmosTooManyValidators, NotEnoughDelegationBalance, } from "@ledgerhq/common/lib/errors";
+import { ClaimRewardsFeesWarning, CosmosDelegateAllFundsWarning, CosmosRedelegationInProgress, CosmosTooManyValidators, NotEnoughDelegationBalance, } from "@ledgerhq/ledger-common/lib/errors";
 import { BigNumber } from "bignumber.js";
 import { COSMOS_MAX_DELEGATIONS, COSMOS_MAX_REDELEGATIONS, COSMOS_MAX_UNBONDINGS, getMaxEstimatedBalance, } from "./logic";
 import invariant from "invariant";

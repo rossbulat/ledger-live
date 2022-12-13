@@ -1,6 +1,6 @@
 import type { AccountBridge, CurrencyBridge } from "@ledgerhq/types-live";
 import type { Transaction } from "../types";
-import { makeAccountBridgeReceive } from "@ledgerhq/common/lib/bridge/jsHelpers";
+import { makeAccountBridgeReceive } from "@ledgerhq/ledger-common/lib/bridge/jsHelpers";
 import { sync, scanAccounts } from "../js-synchronization";
 import {
   createTransaction,

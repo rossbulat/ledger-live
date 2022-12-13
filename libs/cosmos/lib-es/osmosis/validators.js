@@ -34,7 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { getCryptoCurrencyById } from "@ledgerhq/common/lib/currencies";
+import { getCryptoCurrencyById } from "@ledgerhq/ledger-common/lib/currencies";
 import { CosmosValidatorsManager } from "../CosmosValidatorsManager";
 import { nodeEndpoint } from "./api/sdk";
 import { osmosisAPI } from "./api/sdk";

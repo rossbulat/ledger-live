@@ -1,6 +1,6 @@
 import type { AccountLike, Account } from "@ledgerhq/types-live";
 import type { Transaction, TransactionStatus } from "./types";
-import type { CommonDeviceTransactionField } from "@ledgerhq/common/lib/transaction";
+import type { CommonDeviceTransactionField } from "@ledgerhq/ledger-common/lib/transaction";
 export declare type ExtraDeviceTransactionField = {
     type: "cosmos.delegateValidators";
     label: string;

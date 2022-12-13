@@ -63,11 +63,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 exports.__esModule = true;
 exports.sync = exports.scanAccounts = exports.getAccountShape = void 0;
 var bignumber_js_1 = require("bignumber.js");
-var jsHelpers_1 = require("@ledgerhq/common/lib/bridge/jsHelpers");
-var account_1 = require("@ledgerhq/common/lib/account");
+var jsHelpers_1 = require("@ledgerhq/ledger-common/lib/bridge/jsHelpers");
+var account_1 = require("@ledgerhq/ledger-common/lib/account");
 var Cosmos_1 = require("./api/Cosmos");
 var amino_1 = require("@cosmjs/amino");
-var operation_1 = require("@ledgerhq/common/lib/operation");
+var operation_1 = require("@ledgerhq/ledger-common/lib/operation");
 var helpers_1 = require("./helpers");
 var hw_getAddress_1 = __importDefault(require("./hw-getAddress"));
 var getBlankOperation = function (tx, fees, id) { return ({

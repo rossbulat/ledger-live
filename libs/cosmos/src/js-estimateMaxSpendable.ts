@@ -1,7 +1,7 @@
 import { getAbandonSeedAddress } from "@ledgerhq/cryptoassets";
 import type { Account, AccountLike } from "@ledgerhq/types-live";
 import { BigNumber } from "bignumber.js";
-import { getMainAccount } from "@ledgerhq/common/lib/account";
+import { getMainAccount } from "@ledgerhq/ledger-common/lib/account";
 import createTransaction from "./js-createTransaction";
 import getTransactionStatus from "./js-getTransactionStatus";
 import prepareTransaction from "./js-prepareTransaction";

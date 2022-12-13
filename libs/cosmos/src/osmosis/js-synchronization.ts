@@ -1,12 +1,12 @@
 import { pubkeyToAddress, decodeBech32Pubkey } from "@cosmjs/amino";
 import { BigNumber } from "bignumber.js";
-import { encodeAccountId } from "@ledgerhq/common/lib/account";
+import { encodeAccountId } from "@ledgerhq/ledger-common/lib/account";
 import {
   makeSync,
   makeScanAccounts,
   GetAccountShape,
   mergeOps,
-} from "@ledgerhq/common/lib/bridge/jsHelpers";
+} from "@ledgerhq/ledger-common/lib/bridge/jsHelpers";
 import { osmosisAPI } from "./api/sdk";
 import getAddressFn from "./hw-getAddress";
 

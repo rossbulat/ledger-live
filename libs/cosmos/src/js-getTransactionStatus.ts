@@ -13,7 +13,7 @@ import {
   CosmosRedelegationInProgress,
   CosmosTooManyValidators,
   NotEnoughDelegationBalance,
-} from "@ledgerhq/common/lib/errors";
+} from "@ledgerhq/ledger-common/lib/errors";
 import {
   CosmosLikeTransaction,
   StatusErrorMap,

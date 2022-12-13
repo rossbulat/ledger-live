@@ -1,4 +1,4 @@
-import { getCryptoCurrencyById } from "@ledgerhq/common/lib/currencies";
+import { getCryptoCurrencyById } from "@ledgerhq/ledger-common/lib/currencies";
 import { CosmosValidatorsManager } from "../CosmosValidatorsManager";
 import { nodeEndpoint } from "./api/sdk";
 import { osmosisAPI } from "./api/sdk";

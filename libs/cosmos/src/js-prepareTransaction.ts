@@ -1,10 +1,10 @@
 import { CosmosAccount, Transaction } from "./types";
 import BigNumber from "bignumber.js";
 import { defaultCosmosAPI } from "./api/Cosmos";
-import { getEnv } from "@ledgerhq/common/lib/env";
+import { getEnv } from "@ledgerhq/ledger-common/lib/env";
 import { buildTransaction, postBuildTransaction } from "./js-buildTransaction";
 import { getMaxEstimatedBalance } from "./logic";
-import { CacheRes, makeLRUCache } from "@ledgerhq/common/lib/cache";
+import { CacheRes, makeLRUCache } from "@ledgerhq/ledger-common/lib/cache";
 import type { Account } from "@ledgerhq/types-live";
 
 export const calculateFees: CacheRes<

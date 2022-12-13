@@ -34,10 +34,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import network from "@ledgerhq/common/lib/network";
+import network from "@ledgerhq/ledger-common/lib/network";
 import { log } from "@ledgerhq/logs";
-import { getEnv } from "@ledgerhq/common/lib/env";
-import { makeLRUCache } from "@ledgerhq/common/lib/cache";
+import { getEnv } from "@ledgerhq/ledger-common/lib/env";
+import { makeLRUCache } from "@ledgerhq/ledger-common/lib/cache";
 // Utils
 var getBaseApiUrl = function (currency) {
     if (currency.id === "cosmos_testnet") {

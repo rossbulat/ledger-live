@@ -8,3 +8,4 @@ packages:
   - "tools/**"
   - "libs/ledger-common"
   - "libs/cosmos"
+  - "libs/ledger-hardware"

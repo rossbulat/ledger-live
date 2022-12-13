@@ -34,7 +34,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { makeAccountBridgeReceive } from "@ledgerhq/common/lib/bridge/jsHelpers";
+import { makeAccountBridgeReceive } from "@ledgerhq/ledger-common/lib/bridge/jsHelpers";
 import { sync, scanAccounts } from "../js-synchronization";
 import { createTransaction, updateTransaction, prepareTransaction, } from "../js-transaction";
 import getTransactionStatus from "../js-getTransactionStatus";

@@ -8,8 +8,8 @@ import type {
 import type { Transaction } from "./types";
 import { osmosisAPI } from "./api/sdk";
 import { Observable } from "rxjs";
-import { withDevice } from "@ledgerhq/common/lib/hw/deviceAccess";
-import { encodeOperationId } from "@ledgerhq/common/lib/operation";
+import { withDevice } from "@ledgerhq/ledger-common/lib/hw/deviceAccess";
+import { encodeOperationId } from "@ledgerhq/ledger-common/lib/operation";
 import { LedgerSigner } from "@cosmjs/ledger-amino";
 import { HdPath, stringToPath } from "@cosmjs/crypto";
 import { buildTransaction, postBuildTransaction } from "./js-buildTransaction";

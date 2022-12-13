@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var currencies_1 = require("@ledgerhq/common/lib/currencies");
+var currencies_1 = require("@ledgerhq/ledger-common/lib/currencies");
 var CosmosValidatorsManager_1 = require("../CosmosValidatorsManager");
 var sdk_1 = require("./api/sdk");
 var sdk_2 = require("./api/sdk");

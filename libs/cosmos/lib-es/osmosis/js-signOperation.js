@@ -36,8 +36,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import { osmosisAPI } from "./api/sdk";
 import { Observable } from "rxjs";
-import { withDevice } from "@ledgerhq/common/lib/hw/deviceAccess";
-import { encodeOperationId } from "@ledgerhq/common/lib/operation";
+import { withDevice } from "@ledgerhq/ledger-common/lib/hw/deviceAccess";
+import { encodeOperationId } from "@ledgerhq/ledger-common/lib/operation";
 import { LedgerSigner } from "@cosmjs/ledger-amino";
 import { stringToPath } from "@cosmjs/crypto";
 import { buildTransaction, postBuildTransaction } from "./js-buildTransaction";

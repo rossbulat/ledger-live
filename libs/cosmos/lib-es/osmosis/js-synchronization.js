@@ -58,8 +58,8 @@ var __values = (this && this.__values) || function(o) {
 };
 import { pubkeyToAddress, decodeBech32Pubkey } from "@cosmjs/amino";
 import { BigNumber } from "bignumber.js";
-import { encodeAccountId } from "@ledgerhq/common/lib/account";
-import { makeSync, makeScanAccounts, mergeOps, } from "@ledgerhq/common/lib/bridge/jsHelpers";
+import { encodeAccountId } from "@ledgerhq/ledger-common/lib/account";
+import { makeSync, makeScanAccounts, mergeOps, } from "@ledgerhq/ledger-common/lib/bridge/jsHelpers";
 import { osmosisAPI } from "./api/sdk";
 import getAddressFn from "./hw-getAddress";
 var accountPubPrefix = "osmopub";

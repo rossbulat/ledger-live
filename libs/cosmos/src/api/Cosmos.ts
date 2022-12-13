@@ -1,7 +1,7 @@
-import { getEnv } from "@ledgerhq/common/lib/env";
+import { getEnv } from "@ledgerhq/ledger-common/lib/env";
 import BigNumber from "bignumber.js";
-import network from "@ledgerhq/common/lib/network";
-import { patchOperationWithHash } from "@ledgerhq/common/lib/operation";
+import network from "@ledgerhq/ledger-common/lib/network";
+import { patchOperationWithHash } from "@ledgerhq/ledger-common/lib/operation";
 import { CryptoCurrency } from "@ledgerhq/types-cryptoassets";
 import { Operation } from "@ledgerhq/types-live";
 

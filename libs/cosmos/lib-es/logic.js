@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import invariant from "invariant";
 import { BigNumber } from "bignumber.js";
-import { formatCurrencyUnit } from "@ledgerhq/common/lib/currencies";
+import { formatCurrencyUnit } from "@ledgerhq/ledger-common/lib/currencies";
 import { calculateFees } from "./js-prepareTransaction";
 export var COSMOS_MAX_REDELEGATIONS = 7;
 export var COSMOS_MAX_UNBONDINGS = 7;

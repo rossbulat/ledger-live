@@ -46,7 +46,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { getAbandonSeedAddress } from "@ledgerhq/cryptoassets";
-import { getMainAccount } from "@ledgerhq/common/lib/account";
+import { getMainAccount } from "@ledgerhq/ledger-common/lib/account";
 import createTransaction from "./js-createTransaction";
 import getTransactionStatus from "./js-getTransactionStatus";
 import prepareTransaction from "./js-prepareTransaction";

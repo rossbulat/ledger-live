@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { BigNumber } from "bignumber.js";
-import { getMainAccount } from "@ledgerhq/common/lib/account";
+import { getMainAccount } from "@ledgerhq/ledger-common/lib/account";
 import getEstimatedFees from "./js-getFeesForTransaction";
 /**
  * Returns the maximum possible amount for transaction, considering fees

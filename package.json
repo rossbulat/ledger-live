@@ -91,7 +91,11 @@
     "ui:icons": "pnpm --filter icons-ui",
     "ui:crypto-icons": "pnpm --filter crypto-icons-ui",
     "ui:shared": "pnpm --filter shared-ui",
-    "actions": "pnpm --filter @actions/*"
+    "actions": "pnpm --filter @actions/*",
+
+    "mine:common": "pnpm --filter ledger-common",
+    "mine:hardware": "pnpm --filter ledger-hardware",
+    "mine:cosmos": "pnpm --filter cosmos"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.6",

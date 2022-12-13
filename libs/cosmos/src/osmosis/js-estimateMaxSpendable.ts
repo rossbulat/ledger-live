@@ -1,6 +1,6 @@
 import { BigNumber } from "bignumber.js";
 import type { AccountLike, Account } from "@ledgerhq/types-live";
-import { getMainAccount } from "@ledgerhq/common/lib/account";
+import { getMainAccount } from "@ledgerhq/ledger-common/lib/account";
 import getEstimatedFees from "./js-getFeesForTransaction";
 import { CosmosOperationMode } from "../types";
 

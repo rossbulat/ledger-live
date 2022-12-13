@@ -1,0 +1,148 @@
+diff ledger-live-common/src/families/cosmos/CosmosValidatorsManager.ts cosmos/src/CosmosValidatorsManager.ts
+1c1
+< import network from "../../network";
+---
+> import network from "@ledgerhq/ledger-common/lib/network";
+3,4c3,4
+< import { EnvName, EnvValue, getEnv } from "../../env";
+< import { makeLRUCache } from "../../cache";
+---
+> import { EnvName, EnvValue, getEnv } from "@ledgerhq/ledger-common/lib/env";
+> import { makeLRUCache } from "@ledgerhq/ledger-common/lib/cache";
+Only in ledger-live-common/src/families/cosmos: __snapshots__
+diff ledger-live-common/src/families/cosmos/account.ts cosmos/src/account.ts
+4,5c4,5
+< import { getAccountUnit } from "../../account";
+< import { formatCurrencyUnit } from "../../currencies";
+---
+> import { getAccountUnit } from "@ledgerhq/ledger-common/lib/account";
+> import { formatCurrencyUnit } from "@ledgerhq/ledger-common/lib/currencies";
+13c13
+< import { getCurrentOsmosisPreloadData } from "../osmosis/preloadedData";
+---
+> import { getCurrentOsmosisPreloadData } from "./osmosis/preloadedData";
+Common subdirectories: ledger-live-common/src/families/cosmos/api and cosmos/src/api
+Only in ledger-live-common/src/families/cosmos: banner.test.ts
+Common subdirectories: ledger-live-common/src/families/cosmos/bridge and cosmos/src/bridge
+Only in ledger-live-common/src/families/cosmos: bridge.integration.test.ts
+diff ledger-live-common/src/families/cosmos/deviceTransactionConfig.ts cosmos/src/deviceTransactionConfig.ts
+3,6c3,5
+< import type { DeviceTransactionField } from "../../transaction";
+< import { getMainAccount } from "../../account";
+< import { getAccountUnit } from "../../account";
+< import { formatCurrencyUnit } from "../../currencies";
+---
+> import type { CommonDeviceTransactionField } from "@ledgerhq/ledger-common/lib/transaction";
+> import { getMainAccount, getAccountUnit } from "@ledgerhq/ledger-common/lib/account";
+> import { formatCurrencyUnit } from "@ledgerhq/ledger-common/lib/currencies";
+21c20
+< type CosmosTransactionFieldType = DeviceTransactionField & {
+---
+> type CosmosTransactionFieldType = (CommonDeviceTransactionField | ExtraDeviceTransactionField) & {
+Only in ledger-live-common/src/families/cosmos: helpers.unit.test.ts
+diff ledger-live-common/src/families/cosmos/hw-getAddress.ts cosmos/src/hw-getAddress.ts
+2c2
+< import type { Resolver } from "../../hw/getAddress/types";
+---
+> import type { Resolver } from "@ledgerhq/ledger-common/lib/hw/getAddress/types";
+diff ledger-live-common/src/families/cosmos/js-estimateMaxSpendable.ts cosmos/src/js-estimateMaxSpendable.ts
+4c4
+< import { getMainAccount } from "../../account";
+---
+> import { getMainAccount } from "@ledgerhq/ledger-common/lib/account";
+diff ledger-live-common/src/families/cosmos/js-getTransactionStatus.ts cosmos/src/js-getTransactionStatus.ts
+16c16
+< } from "../../errors";
+---
+> } from "@ledgerhq/ledger-common/lib/errors";
+32c32
+< import { OsmosisAPI } from "../osmosis/api/sdk";
+---
+> import { OsmosisAPI } from "./osmosis/api/sdk";
+diff ledger-live-common/src/families/cosmos/js-prepareTransaction.ts cosmos/src/js-prepareTransaction.ts
+4c4
+< import { getEnv } from "../../env";
+---
+> import { getEnv } from "@ledgerhq/ledger-common/lib/env";
+7c7
+< import { CacheRes, makeLRUCache } from "../../cache";
+---
+> import { CacheRes, makeLRUCache } from "@ledgerhq/ledger-common/lib/cache";
+diff ledger-live-common/src/families/cosmos/js-signOperation.ts cosmos/src/js-signOperation.ts
+4,5c4,5
+< import { withDevice } from "../../hw/deviceAccess";
+< import { encodeOperationId } from "../../operation";
+---
+> import { withDevice } from "@ledgerhq/ledger-common/lib/hw/deviceAccess";
+> import { encodeOperationId } from "@ledgerhq/ledger-common/lib/operation";
+diff ledger-live-common/src/families/cosmos/js-synchronisation.ts cosmos/src/js-synchronisation.ts
+7,8c7,8
+< } from "../../bridge/jsHelpers";
+< import { encodeAccountId } from "../../account";
+---
+> } from "@ledgerhq/ledger-common/lib/bridge/jsHelpers";
+> import { encodeAccountId } from "@ledgerhq/ledger-common/lib/account";
+11c11
+< import { encodeOperationId } from "../../operation";
+---
+> import { encodeOperationId } from "@ledgerhq/ledger-common/lib/operation";
+14a15
+> import getAddressFn from "./hw-getAddress";
+244c245
+< export const scanAccounts = makeScanAccounts({ getAccountShape });
+---
+> export const scanAccounts = makeScanAccounts({ getAccountShape, getAddressFn });
+diff ledger-live-common/src/families/cosmos/logic.ts cosmos/src/logic.ts
+3c3
+< import { formatCurrencyUnit } from "../../currencies";
+---
+> import { formatCurrencyUnit } from "@ledgerhq/ledger-common/lib/currencies";
+Only in ledger-live-common/src/families/cosmos: mock.ts
+Only in cosmos/src: osmosis
+Only in ledger-live-common/src/families/cosmos: react.test.ts
+diff ledger-live-common/src/families/cosmos/react.ts cosmos/src/react.ts
+24,25c24
+< import { getAccountUnit } from "../../account";
+< import useMemoOnce from "../../hooks/useMemoOnce";
+---
+> import { getAccountUnit } from "@ledgerhq/ledger-common/lib/account";
+32,33c31,32
+< } from "../osmosis/preloadedData";
+< import { LEDGER_OSMOSIS_VALIDATOR_ADDRESS } from "../osmosis/utils";
+---
+> } from "./osmosis/preloadedData";
+> import { LEDGER_OSMOSIS_VALIDATOR_ADDRESS } from "./osmosis/utils";
+146,148c145
+<   const initialVotes = useMemoOnce(() =>
+<     delegations.map(({ address }) => address)
+<   );
+---
+>   const initialVotes = delegations.map(({ address }) => address);
+Only in ledger-live-common/src/families/cosmos: specs.ts
+Only in ledger-live-common/src/families/cosmos: speculos-deviceActions.ts
+diff ledger-live-common/src/families/cosmos/transaction.ts cosmos/src/transaction.ts
+9,11c9,11
+< } from "../../transaction/common";
+< import { getAccountUnit } from "../../account";
+< import { formatCurrencyUnit } from "../../currencies";
+---
+> } from "@ledgerhq/ledger-common/lib/transaction/common";
+> import { getAccountUnit } from "@ledgerhq/ledger-common/lib/account";
+> import { formatCurrencyUnit } from "@ledgerhq/ledger-common/lib/currencies";
+diff ledger-live-common/src/families/cosmos/types.ts cosmos/src/types.ts
+221d220
+< 
+223,225d221
+< export function isCosmosAccount(account: Account): account is CosmosAccount {
+<   return "cosmosResources" in account;
+< }
+diff ledger-live-common/src/families/cosmos/utils.ts cosmos/src/utils.ts
+3c3
+< import { LEDGER_OSMOSIS_VALIDATOR_ADDRESS } from "../osmosis/utils";
+---
+> import { LEDGER_OSMOSIS_VALIDATOR_ADDRESS } from "./osmosis/utils";
+diff ledger-live-common/src/families/cosmos/validators.ts cosmos/src/validators.ts
+1c1
+< import { getCryptoCurrencyById } from "../../currencies";
+---
+> import { getCryptoCurrencyById } from "@ledgerhq/ledger-common/lib/currencies";

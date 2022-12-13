@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 exports.__esModule = true;
-var jsHelpers_1 = require("@ledgerhq/common/lib/bridge/jsHelpers");
+var jsHelpers_1 = require("@ledgerhq/ledger-common/lib/bridge/jsHelpers");
 var js_synchronization_1 = require("../js-synchronization");
 var js_transaction_1 = require("../js-transaction");
 var js_getTransactionStatus_1 = __importDefault(require("../js-getTransactionStatus"));

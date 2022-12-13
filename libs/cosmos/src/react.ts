@@ -21,7 +21,7 @@ import {
   mapDelegationInfo,
   searchFilter as defaultSearchFilter,
 } from "./logic";
-import { getAccountUnit } from "@ledgerhq/common/lib/account";
+import { getAccountUnit } from "@ledgerhq/ledger-common/lib/account";
 import { LEDGER_VALIDATOR_ADDRESS } from "./utils";
 
 // Add Cosmos-families imports below:

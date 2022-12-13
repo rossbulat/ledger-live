@@ -18,7 +18,7 @@ import invariant from "invariant";
 import { useEffect, useMemo, useState } from "react";
 import { getCurrentCosmosPreloadData, getCosmosPreloadDataUpdates, } from "./preloadedData";
 import { mapDelegations, mapDelegationInfo, searchFilter as defaultSearchFilter, } from "./logic";
-import { getAccountUnit } from "@ledgerhq/common/lib/account";
+import { getAccountUnit } from "@ledgerhq/ledger-common/lib/account";
 import { LEDGER_VALIDATOR_ADDRESS } from "./utils";
 // Add Cosmos-families imports below:
 import { getCurrentOsmosisPreloadData, getOsmosisPreloadDataUpdates, } from "./osmosis/preloadedData";

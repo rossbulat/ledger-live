@@ -1,8 +1,8 @@
 import type { AccountLike, Account } from "@ledgerhq/types-live";
 import type { Transaction, TransactionStatus } from "./types";
-import type { CommonDeviceTransactionField } from "@ledgerhq/common/lib/transaction";
-import { getMainAccount, getAccountUnit } from "@ledgerhq/common/lib/account";
-import { formatCurrencyUnit } from "@ledgerhq/common/lib/currencies";
+import type { CommonDeviceTransactionField } from "@ledgerhq/ledger-common/lib/transaction";
+import { getMainAccount, getAccountUnit } from "@ledgerhq/ledger-common/lib/account";
+import { formatCurrencyUnit } from "@ledgerhq/ledger-common/lib/currencies";
 export type ExtraDeviceTransactionField =
   | {
       type: "cosmos.delegateValidators";

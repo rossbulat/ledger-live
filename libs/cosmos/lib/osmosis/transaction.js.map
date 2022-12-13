@@ -1,1 +1,1 @@
-{"version":3,"file":"transaction.js","sourceRoot":"","sources":["../../src/osmosis/transaction.ts"],"names":[],"mappings":";;AAAA,8CAIwB;AAExB,kEAIiD;AAEjD,qBAAe;IACb,iBAAiB,iCAAA;IACjB,kBAAkB,kCAAA;IAClB,gBAAgB,gCAAA;IAChB,wBAAwB,yCAAA;IACxB,sBAAsB,uCAAA;IACtB,uBAAuB,wCAAA;CACxB,CAAC"}
+{"version":3,"file":"transaction.js","sourceRoot":"","sources":["../../src/osmosis/transaction.ts"],"names":[],"mappings":";;AAAA,8CAIwB;AAExB,yEAIwD;AAExD,qBAAe;IACb,iBAAiB,iCAAA;IACjB,kBAAkB,kCAAA;IAClB,gBAAgB,gCAAA;IAChB,wBAAwB,yCAAA;IACxB,sBAAsB,uCAAA;IACtB,uBAAuB,wCAAA;CACxB,CAAC"}

@@ -1,5 +1,5 @@
 import Cosmos from "@ledgerhq/hw-app-cosmos";
-import type { Resolver } from "@ledgerhq/common/lib/hw/getAddress/types";
+import type { Resolver } from "@ledgerhq/ledger-common/lib/hw/getAddress/types";
 
 const resolver: Resolver = async (transport, { path, verify, currency }) => {
   const cosmos = new Cosmos(transport);

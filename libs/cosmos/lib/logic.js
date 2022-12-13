@@ -53,7 +53,7 @@ exports.__esModule = true;
 exports.getRedelegationCompletionDate = exports.getRedelegation = exports.canClaimRewards = exports.canRedelegate = exports.canDelegate = exports.canUndelegate = exports.getMaxEstimatedBalance = exports.getMaxDelegationAvailable = exports.searchFilter = exports.formatValue = exports.mapDelegationInfo = exports.mapRedelegations = exports.mapUnbondings = exports.mapDelegations = exports.COSMOS_MIN_FEES = exports.COSMOS_MIN_SAFE = exports.COSMOS_MAX_DELEGATIONS = exports.COSMOS_MAX_UNBONDINGS = exports.COSMOS_MAX_REDELEGATIONS = void 0;
 var invariant_1 = __importDefault(require("invariant"));
 var bignumber_js_1 = require("bignumber.js");
-var currencies_1 = require("@ledgerhq/common/lib/currencies");
+var currencies_1 = require("@ledgerhq/ledger-common/lib/currencies");
 var js_prepareTransaction_1 = require("./js-prepareTransaction");
 exports.COSMOS_MAX_REDELEGATIONS = 7;
 exports.COSMOS_MAX_UNBONDINGS = 7;

@@ -78,10 +78,10 @@ exports.__esModule = true;
 exports.prepareTransaction = exports.calculateFees = void 0;
 var bignumber_js_1 = __importDefault(require("bignumber.js"));
 var Cosmos_1 = require("./api/Cosmos");
-var env_1 = require("@ledgerhq/common/lib/env");
+var env_1 = require("@ledgerhq/ledger-common/lib/env");
 var js_buildTransaction_1 = require("./js-buildTransaction");
 var logic_1 = require("./logic");
-var cache_1 = require("@ledgerhq/common/lib/cache");
+var cache_1 = require("@ledgerhq/ledger-common/lib/cache");
 exports.calculateFees = (0, cache_1.makeLRUCache)(function (_a) {
     var account = _a.account, transaction = _a.transaction;
     return __awaiter(void 0, void 0, void 0, function () {

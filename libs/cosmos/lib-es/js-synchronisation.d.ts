@@ -1,4 +1,4 @@
-import { GetAccountShape } from "@ledgerhq/common/lib/bridge/jsHelpers";
+import { GetAccountShape } from "@ledgerhq/ledger-common/lib/bridge/jsHelpers";
 export declare const getAccountShape: GetAccountShape;
 export declare const scanAccounts: (arg0: {
     currency: import("@ledgerhq/types-cryptoassets").CryptoCurrency;

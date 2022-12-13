@@ -1,4 +1,4 @@
-import { EnvName, EnvValue } from "@ledgerhq/common/lib/env";
+import { EnvName, EnvValue } from "@ledgerhq/ledger-common/lib/env";
 import type { CosmosValidatorItem, CosmosRewardsState } from "./types";
 import type { CryptoCurrency } from "@ledgerhq/types-cryptoassets";
 export declare class CosmosValidatorsManager {

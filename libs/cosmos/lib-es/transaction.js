@@ -10,9 +10,9 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { BigNumber } from "bignumber.js";
-import { formatTransactionStatusCommon as formatTransactionStatus, fromTransactionCommonRaw, fromTransactionStatusRawCommon as fromTransactionStatusRaw, toTransactionCommonRaw, toTransactionStatusRawCommon as toTransactionStatusRaw, } from "@ledgerhq/common/lib/transaction/common";
-import { getAccountUnit } from "@ledgerhq/common/lib/account";
-import { formatCurrencyUnit } from "@ledgerhq/common/lib/currencies";
+import { formatTransactionStatusCommon as formatTransactionStatus, fromTransactionCommonRaw, fromTransactionStatusRawCommon as fromTransactionStatusRaw, toTransactionCommonRaw, toTransactionStatusRawCommon as toTransactionStatusRaw, } from "@ledgerhq/ledger-common/lib/transaction/common";
+import { getAccountUnit } from "@ledgerhq/ledger-common/lib/account";
+import { formatCurrencyUnit } from "@ledgerhq/ledger-common/lib/currencies";
 export var formatTransaction = function (_a, account) {
     var mode = _a.mode, amount = _a.amount, fees = _a.fees, recipient = _a.recipient, validators = _a.validators, memo = _a.memo, sourceValidator = _a.sourceValidator, useAllAmount = _a.useAllAmount;
     return "\n".concat(mode.toUpperCase(), " ").concat(useAllAmount

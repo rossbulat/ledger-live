@@ -61,8 +61,8 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 };
 import { defaultCosmosAPI } from "./api/Cosmos";
 import { Observable } from "rxjs";
-import { withDevice } from "@ledgerhq/common/lib/hw/deviceAccess";
-import { encodeOperationId } from "@ledgerhq/common/lib/operation";
+import { withDevice } from "@ledgerhq/ledger-common/lib/hw/deviceAccess";
+import { encodeOperationId } from "@ledgerhq/ledger-common/lib/operation";
 import Cosmos from "@ledgerhq/hw-app-cosmos";
 import { AminoTypes } from "@cosmjs/stargate";
 import { buildTransaction, postBuildTransaction } from "./js-buildTransaction";

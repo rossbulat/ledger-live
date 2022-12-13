@@ -57,11 +57,11 @@ var __values = (this && this.__values) || function(o) {
     throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 };
 import { BigNumber } from "bignumber.js";
-import { makeSync, makeScanAccounts, mergeOps, } from "@ledgerhq/common/lib/bridge/jsHelpers";
-import { encodeAccountId } from "@ledgerhq/common/lib/account";
+import { makeSync, makeScanAccounts, mergeOps, } from "@ledgerhq/ledger-common/lib/bridge/jsHelpers";
+import { encodeAccountId } from "@ledgerhq/ledger-common/lib/account";
 import { defaultCosmosAPI } from "./api/Cosmos";
 import { pubkeyToAddress, decodeBech32Pubkey } from "@cosmjs/amino";
-import { encodeOperationId } from "@ledgerhq/common/lib/operation";
+import { encodeOperationId } from "@ledgerhq/ledger-common/lib/operation";
 import { getMainMessage } from "./helpers";
 import getAddressFn from "./hw-getAddress";
 var getBlankOperation = function (tx, fees, id) { return ({

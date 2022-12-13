@@ -1,0 +1,1 @@
+{"version":3,"file":"checkAccountApp.d.ts","sourceRoot":"","sources":["../src/checkAccountApp.ts"],"names":[],"mappings":"AAAA,OAAO,SAAS,MAAM,wBAAwB,CAAC;AAK/C,OAAO,KAAK,EAAE,OAAO,EAAE,MAAM,sBAAsB,CAAC;AACpD,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,8BAA8B,CAAC;oCAEtD,SAAS,WACX,OAAO,YACN,cAAc,cACZ,MAAM,KACjB,QAAQ,IAAI,CAAC;AALhB,wBAqBE"}

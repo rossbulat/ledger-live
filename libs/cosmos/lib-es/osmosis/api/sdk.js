@@ -61,9 +61,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import BigNumber from "bignumber.js";
-import { getEnv } from "@ledgerhq/common/lib/env";
-import network from "@ledgerhq/common/lib/network";
-import { encodeOperationId } from "@ledgerhq/common/lib/operation";
+import { getEnv } from "@ledgerhq/ledger-common/lib/env";
+import network from "@ledgerhq/ledger-common/lib/network";
+import { encodeOperationId } from "@ledgerhq/ledger-common/lib/operation";
 import { CosmosAPI } from "../../api/Cosmos";
 import { OsmosisCurrency, OsmosisTransactionTypeEnum, } from "./sdk.types";
 export var nodeEndpoint = getEnv("API_OSMOSIS_NODE").replace(/\/$/, "");

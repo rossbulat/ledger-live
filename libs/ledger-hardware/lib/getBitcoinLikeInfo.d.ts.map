@@ -1,0 +1,1 @@
+{"version":3,"file":"getBitcoinLikeInfo.d.ts","sourceRoot":"","sources":["../src/getBitcoinLikeInfo.ts"],"names":[],"mappings":";AAAA,OAAO,SAAS,MAAM,wBAAwB,CAAC;AAG/C,QAAA,MAAM,kBAAkB,cACX,SAAS,KACnB,QACC;IACE,KAAK,EAAE,MAAM,CAAC;IACd,IAAI,EAAE,MAAM,CAAC;IACb,OAAO,EAAE,MAAM,CAAC;IAChB,KAAK,EAAE,MAAM,CAAC;CACf,GACD,IAAI,GACJ,SAAS,CAsBT,CAAC;AAEL,eAAe,kBAAkB,CAAC"}

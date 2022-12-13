@@ -13,9 +13,9 @@ var __assign = (this && this.__assign) || function () {
 exports.__esModule = true;
 exports.toTransactionRaw = exports.fromTransactionRaw = exports.formatTransaction = void 0;
 var bignumber_js_1 = require("bignumber.js");
-var common_1 = require("@ledgerhq/common/lib/transaction/common");
-var account_1 = require("@ledgerhq/common/lib/account");
-var currencies_1 = require("@ledgerhq/common/lib/currencies");
+var common_1 = require("@ledgerhq/ledger-common/lib/transaction/common");
+var account_1 = require("@ledgerhq/ledger-common/lib/account");
+var currencies_1 = require("@ledgerhq/ledger-common/lib/currencies");
 var formatTransaction = function (_a, account) {
     var mode = _a.mode, amount = _a.amount, fees = _a.fees, recipient = _a.recipient, validators = _a.validators, memo = _a.memo, sourceValidator = _a.sourceValidator, useAllAmount = _a.useAllAmount;
     return "\n".concat(mode.toUpperCase(), " ").concat(useAllAmount

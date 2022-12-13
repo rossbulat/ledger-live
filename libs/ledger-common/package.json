@@ -1,5 +1,5 @@
 {
-  "name": "@ledgerhq/common",
+  "name": "@ledgerhq/ledger-common",
   "version": "0.0.1",
   "description": "EXPERIMENTAL: Common functions of all Ledger client",
   "license": "Apache-2.0",

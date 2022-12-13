@@ -40,10 +40,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 exports.__esModule = true;
 exports.CosmosValidatorsManager = void 0;
-var network_1 = __importDefault(require("@ledgerhq/common/lib/network"));
+var network_1 = __importDefault(require("@ledgerhq/ledger-common/lib/network"));
 var logs_1 = require("@ledgerhq/logs");
-var env_1 = require("@ledgerhq/common/lib/env");
-var cache_1 = require("@ledgerhq/common/lib/cache");
+var env_1 = require("@ledgerhq/ledger-common/lib/env");
+var cache_1 = require("@ledgerhq/ledger-common/lib/cache");
 // Utils
 var getBaseApiUrl = function (currency) {
     if (currency.id === "cosmos_testnet") {

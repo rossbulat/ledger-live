@@ -1,10 +1,10 @@
 {
-  "name": "@ledgerhq/common-test",
+  "name": "@ledgerhq/ledger-common-test",
   "version": "0.0.1",
   "description": "EXPERIMENTAL: Common functions of all Ledger client",
   "license": "Apache-2.0",
   "dependencies": {
-    "@ledgerhq/common": "workspace:^",
+    "@ledgerhq/ledger-common": "workspace:^",
     "@ledgerhq/devices": "workspace:^",
     "@ledgerhq/hw-transport": "workspace:^",
     "@ledgerhq/logs": "workspace:^",

@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
-var account_1 = require("@ledgerhq/common/lib/account");
-var currencies_1 = require("@ledgerhq/common/lib/currencies");
+var account_1 = require("@ledgerhq/ledger-common/lib/account");
+var currencies_1 = require("@ledgerhq/ledger-common/lib/currencies");
 var getSendFields = function (_a) {
     var amount = _a.status.amount, account = _a.account, source = _a.source;
     var fields = [];

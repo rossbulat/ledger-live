@@ -24,7 +24,7 @@
     "@cosmjs/proto-signing": "^0.26.5",
     "@cosmjs/stargate": "^0.26.5",
     "@ledgerhq/cryptoassets": "workspace:^",
-    "@ledgerhq/common": "workspace:^",
+    "@ledgerhq/ledger-common": "workspace:^",
     "@ledgerhq/devices": "workspace:^",
     "@ledgerhq/errors": "workspace:^",
     "@ledgerhq/hw-app-cosmos": "workspace:^",
@@ -61,7 +61,7 @@
     "long": "^4.0.0"
   },
   "devDependencies": {
-    "@ledgerhq/common-test": "workspace:^",
+    "@ledgerhq/ledger-common-test": "workspace:^",
     "@types/jest": "^28.1.6",
     "jest": "^28.1.1",
     "typescript": "^4.5.5"

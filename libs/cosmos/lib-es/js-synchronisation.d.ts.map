@@ -1,1 +1,1 @@
-{"version":3,"file":"js-synchronisation.d.ts","sourceRoot":"","sources":["../src/js-synchronisation.ts"],"names":[],"mappings":"AACA,OAAO,EAGL,eAAe,EAEhB,MAAM,uCAAuC,CAAC;AA6J/C,eAAO,MAAM,eAAe,EAAE,eA+E7B,CAAC;AAEF,eAAO,MAAM,YAAY;;;;;;gFAAsD,CAAC;AAChF,eAAO,MAAM,IAAI,wOAAgC,CAAC"}
+{"version":3,"file":"js-synchronisation.d.ts","sourceRoot":"","sources":["../src/js-synchronisation.ts"],"names":[],"mappings":"AACA,OAAO,EAGL,eAAe,EAEhB,MAAM,8CAA8C,CAAC;AA6JtD,eAAO,MAAM,eAAe,EAAE,eA+E7B,CAAC;AAEF,eAAO,MAAM,YAAY;;;;;;gFAAsD,CAAC;AAChF,eAAO,MAAM,IAAI,wOAAgC,CAAC"}

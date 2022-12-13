@@ -4,11 +4,11 @@ import {
   makeScanAccounts,
   GetAccountShape,
   mergeOps,
-} from "@ledgerhq/common/lib/bridge/jsHelpers";
-import { encodeAccountId } from "@ledgerhq/common/lib/account";
+} from "@ledgerhq/ledger-common/lib/bridge/jsHelpers";
+import { encodeAccountId } from "@ledgerhq/ledger-common/lib/account";
 import { defaultCosmosAPI } from "./api/Cosmos";
 import { pubkeyToAddress, decodeBech32Pubkey } from "@cosmjs/amino";
-import { encodeOperationId } from "@ledgerhq/common/lib/operation";
+import { encodeOperationId } from "@ledgerhq/ledger-common/lib/operation";
 import { CosmosDelegationInfo } from "./types";
 import type { Operation, OperationType } from "@ledgerhq/types-live";
 import { getMainMessage } from "./helpers";

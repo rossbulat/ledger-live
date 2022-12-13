@@ -18,8 +18,8 @@ exports.toOperationExtraRaw = exports.fromOperationExtraRaw = exports.formatAcco
 var invariant_1 = __importDefault(require("invariant"));
 var bignumber_js_1 = require("bignumber.js");
 var preloadedData_1 = require("./preloadedData");
-var account_1 = require("@ledgerhq/common/lib/account");
-var currencies_1 = require("@ledgerhq/common/lib/currencies");
+var account_1 = require("@ledgerhq/ledger-common/lib/account");
+var currencies_1 = require("@ledgerhq/ledger-common/lib/currencies");
 var logic_1 = require("./logic");
 var preloadedData_2 = require("./osmosis/preloadedData");
 function formatOperationSpecifics(op, unit) {

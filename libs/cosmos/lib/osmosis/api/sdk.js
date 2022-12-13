@@ -67,9 +67,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 exports.__esModule = true;
 exports.osmosisAPI = exports.OsmosisAPI = exports.getMicroOsmoAmount = exports.getOperationValue = exports.convertTransactionToOperation = exports.nodeEndpoint = void 0;
 var bignumber_js_1 = __importDefault(require("bignumber.js"));
-var env_1 = require("@ledgerhq/common/lib/env");
-var network_1 = __importDefault(require("@ledgerhq/common/lib/network"));
-var operation_1 = require("@ledgerhq/common/lib/operation");
+var env_1 = require("@ledgerhq/ledger-common/lib/env");
+var network_1 = __importDefault(require("@ledgerhq/ledger-common/lib/network"));
+var operation_1 = require("@ledgerhq/ledger-common/lib/operation");
 var Cosmos_1 = require("../../api/Cosmos");
 var sdk_types_1 = require("./sdk.types");
 exports.nodeEndpoint = (0, env_1.getEnv)("API_OSMOSIS_NODE").replace(/\/$/, "");

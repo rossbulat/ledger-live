@@ -1,0 +1,1 @@
+{"version":3,"file":"ripple.d.ts","sourceRoot":"","sources":["../../src/signTransaction/ripple.ts"],"names":[],"mappings":"AAEA,OAAO,SAAS,MAAM,wBAAwB,CAAC;AAC/C,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,8BAA8B,CAAC;mCAEvD,cAAc,aACb,SAAS,QACd,MAAM,SACL,OAAO,MAAM,EAAE,GAAG,CAAC;AAJ5B,wBAaE"}

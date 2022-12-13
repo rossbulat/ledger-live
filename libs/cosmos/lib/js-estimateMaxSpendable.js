@@ -51,7 +51,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 exports.__esModule = true;
 var cryptoassets_1 = require("@ledgerhq/cryptoassets");
-var account_1 = require("@ledgerhq/common/lib/account");
+var account_1 = require("@ledgerhq/ledger-common/lib/account");
 var js_createTransaction_1 = __importDefault(require("./js-createTransaction"));
 var js_getTransactionStatus_1 = __importDefault(require("./js-getTransactionStatus"));
 var js_prepareTransaction_1 = __importDefault(require("./js-prepareTransaction"));

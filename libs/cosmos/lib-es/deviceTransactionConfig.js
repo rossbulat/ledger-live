@@ -1,5 +1,5 @@
-import { getMainAccount, getAccountUnit } from "@ledgerhq/common/lib/account";
-import { formatCurrencyUnit } from "@ledgerhq/common/lib/currencies";
+import { getMainAccount, getAccountUnit } from "@ledgerhq/ledger-common/lib/account";
+import { formatCurrencyUnit } from "@ledgerhq/ledger-common/lib/currencies";
 var getSendFields = function (_a) {
     var amount = _a.status.amount, account = _a.account, source = _a.source;
     var fields = [];

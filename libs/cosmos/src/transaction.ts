@@ -6,9 +6,9 @@ import {
   fromTransactionStatusRawCommon as fromTransactionStatusRaw,
   toTransactionCommonRaw,
   toTransactionStatusRawCommon as toTransactionStatusRaw,
-} from "@ledgerhq/common/lib/transaction/common";
-import { getAccountUnit } from "@ledgerhq/common/lib/account";
-import { formatCurrencyUnit } from "@ledgerhq/common/lib/currencies";
+} from "@ledgerhq/ledger-common/lib/transaction/common";
+import { getAccountUnit } from "@ledgerhq/ledger-common/lib/account";
+import { formatCurrencyUnit } from "@ledgerhq/ledger-common/lib/currencies";
 import { Account } from "@ledgerhq/types-live";
 
 export const formatTransaction = (

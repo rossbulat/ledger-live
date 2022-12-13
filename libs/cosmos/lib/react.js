@@ -24,7 +24,7 @@ var invariant_1 = __importDefault(require("invariant"));
 var react_1 = require("react");
 var preloadedData_1 = require("./preloadedData");
 var logic_1 = require("./logic");
-var account_1 = require("@ledgerhq/common/lib/account");
+var account_1 = require("@ledgerhq/ledger-common/lib/account");
 var utils_1 = require("./utils");
 // Add Cosmos-families imports below:
 var preloadedData_2 = require("./osmosis/preloadedData");

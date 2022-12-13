@@ -1,6 +1,6 @@
 import invariant from "invariant";
 import { BigNumber } from "bignumber.js";
-import { formatCurrencyUnit } from "@ledgerhq/common/lib/currencies";
+import { formatCurrencyUnit } from "@ledgerhq/ledger-common/lib/currencies";
 import type {
   CosmosDelegation,
   CosmosDelegationInfo,

@@ -72,10 +72,10 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 };
 import BigNumber from "bignumber.js";
 import { defaultCosmosAPI } from "./api/Cosmos";
-import { getEnv } from "@ledgerhq/common/lib/env";
+import { getEnv } from "@ledgerhq/ledger-common/lib/env";
 import { buildTransaction, postBuildTransaction } from "./js-buildTransaction";
 import { getMaxEstimatedBalance } from "./logic";
-import { makeLRUCache } from "@ledgerhq/common/lib/cache";
+import { makeLRUCache } from "@ledgerhq/ledger-common/lib/cache";
 export var calculateFees = makeLRUCache(function (_a) {
     var account = _a.account, transaction = _a.transaction;
     return __awaiter(void 0, void 0, void 0, function () {

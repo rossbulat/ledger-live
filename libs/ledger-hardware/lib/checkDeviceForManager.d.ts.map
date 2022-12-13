@@ -1,0 +1,1 @@
+{"version":3,"file":"checkDeviceForManager.d.ts","sourceRoot":"","sources":["../src/checkDeviceForManager.ts"],"names":[],"mappings":"AAAA,OAAO,SAAS,MAAM,wBAAwB,CAAC;AAC/C,OAAO,EAAE,UAAU,EAAkB,MAAM,MAAM,CAAC;AAGlD,OAAO,EAAE,UAAU,EAAE,WAAW,EAAE,MAAM,sBAAsB,CAAC;oCAElD,SAAS,cACR,UAAU,KACrB,WAAW,WAAW,CAAC;AAH1B,wBAW0C"}

@@ -1,7 +1,7 @@
 import BigNumber from "bignumber.js";
-import { getEnv } from "@ledgerhq/common/lib/env";
-import network from "@ledgerhq/common/lib/network";
-import { encodeOperationId } from "@ledgerhq/common/lib/operation";
+import { getEnv } from "@ledgerhq/ledger-common/lib/env";
+import network from "@ledgerhq/ledger-common/lib/network";
+import { encodeOperationId } from "@ledgerhq/ledger-common/lib/operation";
 import { Operation, OperationType } from "@ledgerhq/types-live";
 import { CosmosAPI } from "../../api/Cosmos";
 import { CosmosDelegationInfo } from "../../types";

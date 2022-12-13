@@ -1,8 +1,8 @@
 import invariant from "invariant";
 import { BigNumber } from "bignumber.js";
 import { getCurrentCosmosPreloadData } from "./preloadedData";
-import { getAccountUnit } from "@ledgerhq/common/lib/account";
-import { formatCurrencyUnit } from "@ledgerhq/common/lib/currencies";
+import { getAccountUnit } from "@ledgerhq/ledger-common/lib/account";
+import { formatCurrencyUnit } from "@ledgerhq/ledger-common/lib/currencies";
 import {
   CosmosOperation,
   CosmosExtraTxInfo,
