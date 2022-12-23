@@ -81,5 +81,9 @@
     "native-modules-tools": "1.0.2",
     "pnpm-utils": "1.0.1"
   },
-  "changesets": []
+  "changesets": [
+    "famous-yaks-deliver",
+    "silent-falcons-scream",
+    "tasty-crews-reflect"
+  ]
 }
