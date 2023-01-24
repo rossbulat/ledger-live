@@ -1,5 +1,11 @@
 # live-mobile
 
+## 3.14.0-prerelease-test.1
+
+### Patch Changes
+
+- [`309d57cfb8`](https://github.com/LedgerHQ/ledger-live/commit/309d57cfb89ac15bfeb1d774e25f2c4dafeb913b) Thanks [@Justkant](https://github.com/Justkant)! - chore: second fake version for LLM and LLD
+
 ## 3.14.0-prerelease-test.0
 
 ### Minor Changes
