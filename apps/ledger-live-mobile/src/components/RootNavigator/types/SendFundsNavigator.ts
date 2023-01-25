@@ -37,6 +37,7 @@ import {
   Transaction as SolanaTransaction,
 } from "@ledgerhq/live-common/families/solana/types";
 import type { Transaction as RippleTransaction } from "@ledgerhq/live-common/families/ripple/types";
+import type { Transaction as ICPTransaction } from "@ledgerhq/live-common/families/internet_computer/types";
 import type { Transaction as StellarTransaction } from "@ledgerhq/live-common/families/stellar/types";
 import BigNumber from "bignumber.js";
 import { Result } from "@ledgerhq/live-common/bridge/useBridgeTransaction";
@@ -331,6 +332,28 @@ export type SendFundsNavigatorStackParamList = {
       | ScreenName.SwapForm;
     nextNavigation:
       | ScreenName.SignTransactionSelectDevice
+      | ScreenName.SignTransactionSelectDevice
+      | ScreenName.SendSelectDevice
+      | ScreenName.SwapForm;
+  };
+  [ScreenName.InternetComputerEditMemo]: {
+    accountId: string;
+    account: Account;
+    parentId?: string;
+    transaction: ICPTransaction;
+    currentNavigation:
+      | ScreenName.LendingWithdrawSummary
+      | ScreenName.LendingSupplySummary
+      | ScreenName.SignTransactionSummary
+      | ScreenName.LendingEnableSummary
+      | ScreenName.SignTransactionSummary
+      | ScreenName.SendSummary
+      | ScreenName.SwapForm;
+    nextNavigation:
+      | ScreenName.LendingWithdrawSelectDevice
+      | ScreenName.LendingSupplySelectDevice
+      | ScreenName.SignTransactionSelectDevice
+      | ScreenName.LendingEnableSelectDevice
       | ScreenName.SignTransactionSelectDevice
       | ScreenName.SendSelectDevice
       | ScreenName.SwapForm;
