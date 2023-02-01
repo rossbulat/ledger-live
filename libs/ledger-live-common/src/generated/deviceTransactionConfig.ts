@@ -8,6 +8,7 @@ import ethereum from "../families/ethereum/deviceTransactionConfig";
 import evm from "../families/evm/deviceTransactionConfig";
 import filecoin from "../families/filecoin/deviceTransactionConfig";
 import hedera from "../families/hedera/deviceTransactionConfig";
+import internet_computer from "../families/internet_computer/deviceTransactionConfig";
 import near from "../families/near/deviceTransactionConfig";
 import ripple from "../families/ripple/deviceTransactionConfig";
 import solana from "../families/solana/deviceTransactionConfig";
@@ -28,6 +29,7 @@ export default {
   evm,
   filecoin,
   hedera,
+  internet_computer,
   near,
   ripple,
   solana,
