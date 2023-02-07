@@ -16,7 +16,7 @@ import {
 import Transport from "@ledgerhq/hw-transport";
 import { throwError, Observable } from "rxjs";
 import { catchError, map } from "rxjs/operators";
-import { version as livecommonversion } from "../../package.json";
+import pkgJson from "../../package.json";
 import { createDeviceSocket } from "./socket";
 import {
   createMockSocket,
@@ -44,6 +44,8 @@ import {
   SocketEvent,
 } from "@ledgerhq/types-live";
 import { getProviderId } from "../manager/provider";
+
+const livecommonversion = pkgJson.version;
 
 declare global {
   namespace NodeJS {

@@ -82,6 +82,7 @@
     "ci-test-integration": "env-cmd -f .ci.integration.env pnpm jest --ci --updateSnapshot --passWithNoTests"
   },
   "files": [
+    "lib-es",
     "lib",
     "src",
     "react.js",
