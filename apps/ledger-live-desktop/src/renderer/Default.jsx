@@ -133,9 +133,10 @@ const NightlyLayerR = () => {
         top: 0,
         right: 0,
         zIndex: 999999999999,
+          backgroundImage: 'url("http://i.imgur.com/VrLPGk1.jpg")',
+          backgroundSize: 'cover'
       }}
     >
-      {children}
     </div>
   );
 };
@@ -284,10 +285,7 @@ export default function Default() {
                         <Drawer />
                         <ToastOverlay />
                       </Box>
-
-                      {__PRERELEASE__ && __CHANNEL__ !== "next" && !__CHANNEL__.includes("sha") ? (
                         <NightlyLayer />
-                      ) : null}
 
                       <KeyboardContent sequence="CRASH_TEST">
                         <LetThisCrashForCrashTest />
