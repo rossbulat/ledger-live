@@ -2023,15 +2023,9 @@ importers:
       '@dfinity/candid':
         specifier: ^0.15.0
         version: 0.15.0(@types/node@18.15.11)(source-map-support@0.5.21)(typescript@4.9.5)
-      '@dfinity/nns':
-        specifier: 0.11.0-next-2022-12-28
-        version: 0.11.0-next-2022-12-28(@dfinity/candid@0.15.0)(@dfinity/utils@0.0.6)(@types/node@18.15.11)(buffer@6.0.3)(source-map-support@0.5.21)(typescript@4.9.5)
       '@dfinity/principal':
         specifier: ^0.15.0
         version: 0.15.0(@types/node@18.15.11)(source-map-support@0.5.21)(typescript@4.9.5)
-      '@dfinity/utils':
-        specifier: ^0.0.6
-        version: 0.0.6(@dfinity/candid@0.15.0)(@dfinity/principal@0.15.0)(@types/node@18.15.11)(source-map-support@0.5.21)(typescript@4.9.5)
       '@elrondnetwork/erdjs':
         specifier: 11.0.0
         version: 11.0.0
@@ -10827,49 +10821,12 @@ packages:
       - typescript
     dev: false
 
-  /@dfinity/nns@0.11.0-next-2022-12-28(@dfinity/candid@0.15.0)(@dfinity/utils@0.0.6)(@types/node@18.15.11)(buffer@6.0.3)(source-map-support@0.5.21)(typescript@4.9.5):
-    resolution: {integrity: sha512-v5YPU4Wsv9CzlsfRTMuK/TMsjGmIFy6hbcZ0aZslb2fsvadfGP/CFasxtUzY1SYMICDE/30gJqOQ9kHrZNsnig==}
-    peerDependencies:
-      '@dfinity/utils': ^0.0.7-next
-    dependencies:
-      '@dfinity/agent': 0.15.1(@dfinity/candid@0.15.0)(@dfinity/principal@0.15.0)(@types/node@18.15.11)(source-map-support@0.5.21)(typescript@4.9.5)
-      '@dfinity/principal': 0.15.0(@types/node@18.15.11)(source-map-support@0.5.21)(typescript@4.9.5)
-      '@dfinity/utils': 0.0.6(@dfinity/candid@0.15.0)(@dfinity/principal@0.15.0)(@types/node@18.15.11)(source-map-support@0.5.21)(typescript@4.9.5)
-      crc: 4.3.2(buffer@6.0.3)
-      crc-32: 1.2.2
-      google-protobuf: 3.21.2
-      js-sha256: 0.9.0
-      randombytes: 2.1.0
-    transitivePeerDependencies:
-      - '@dfinity/candid'
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - buffer
-      - source-map-support
-      - typescript
-    dev: false
-
   /@dfinity/principal@0.15.0(@types/node@18.15.11)(source-map-support@0.5.21)(typescript@4.9.5):
     resolution: {integrity: sha512-iLtUMmU3ZlY6Pz7gLdg8OqblrlYhQHWvSYvFzy5vXORjdvZ8OSWlu7vrqv0DfdfkFzy0HDJGa9a0mrZD0u94Iw==}
     dependencies:
       js-sha256: 0.9.0
       ts-node: 10.9.1(@types/node@18.15.11)(source-map-support@0.5.21)(typescript@4.9.5)
     transitivePeerDependencies:
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - source-map-support
-      - typescript
-    dev: false
-
-  /@dfinity/utils@0.0.6(@dfinity/candid@0.15.0)(@dfinity/principal@0.15.0)(@types/node@18.15.11)(source-map-support@0.5.21)(typescript@4.9.5):
-    resolution: {integrity: sha512-lmLNbGfDE+6MX68qqtO+yy4IIqEvkhMNgiSFtij0HnhrtjJ0sQ/9mgFZR4auynwTQxqW97Zz4gKY56PPqyG6Gw==}
-    dependencies:
-      '@dfinity/agent': 0.15.1(@dfinity/candid@0.15.0)(@dfinity/principal@0.15.0)(@types/node@18.15.11)(source-map-support@0.5.21)(typescript@4.9.5)
-    transitivePeerDependencies:
-      - '@dfinity/candid'
-      - '@dfinity/principal'
       - '@swc/core'
       - '@swc/wasm'
       - '@types/node'
@@ -36783,10 +36740,6 @@ packages:
   /globrex@0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: true
-
-  /google-protobuf@3.21.2:
-    resolution: {integrity: sha512-3MSOYFO5U9mPGikIYCzK0SaThypfGgS6bHqrUGXG3DPHCrb+txNqeEcns1W0lkGfk0rCyNXm7xB9rMxnCiZOoA==}
-    dev: false
 
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
