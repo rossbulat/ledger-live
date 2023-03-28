@@ -1,9 +1,10 @@
 {
-  "engines": {
-    "node": ">=14"
-  },
   "name": "live-mobile",
   "version": "3.17.0",
+  "engines": {
+    "node": "18.5.0"
+  },
+  "packageManager": "pnpm@7.30.0",
   "private": true,
   "scripts": {
     "postinstall": "zx ./scripts/post.mjs",
