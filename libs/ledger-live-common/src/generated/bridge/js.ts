@@ -15,10 +15,28 @@ import solana from "../../families/solana/bridge/js";
 import stellar from "../../families/stellar/bridge/js";
 import tezos from "../../families/tezos/bridge/js";
 import tron from "../../families/tron/bridge/js";
+import { of } from "rxjs";
+import {
+  AccountBridge,
+  CurrencyBridge,
+  TransactionCommon,
+} from "@ledgerhq/types-live";
 import { makeLRUCache } from "../../cache";
 import network from "../../network";
 import { withDevice } from "../../hw/deviceAccess";
+type Bridge<T extends TransactionCommon> = {
+  currencyBridge: CurrencyBridge;
+  accountBridge: AccountBridge<T>;
+};
 import { createBridges as polkadotCreateBridges } from "@ledgerhq/coin-polkadot/bridge/js";
+import { Transaction as Polkadot } from "@ledgerhq/coin-polkadot/types";
+import * as polkadotSigner from "@ledgerhq/hw-app-polkadot";
+const polkadot = async (): Promise<Bridge<Polkadot>> => {
+  const signer = await withDevice("")((transport) =>
+    of(new polkadotSigner.default(transport))
+  ).toPromise();
+  return polkadotCreateBridges(signer, network, makeLRUCache);
+};
 
 export default {
   algorand,
@@ -38,5 +56,5 @@ export default {
   stellar,
   tezos,
   tron,
-  polkadot: polkadotCreateBridges(withDevice, network, makeLRUCache),
+  polkadot,
 };

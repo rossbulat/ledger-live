@@ -1,4 +1,3 @@
-import Transport from "@ledgerhq/hw-transport";
 import {
   DeviceAppVerifyNotSupported,
   StatusCodes,
@@ -7,16 +6,12 @@ import {
 import { log } from "@ledgerhq/logs";
 import type { Result, GetAddressOptions } from "../derivation";
 
-export type Resolver = (
-  transport: Transport,
-  addressOpt: GetAddressOptions
-) => Promise<Result>;
+export type GetAddressFn = (addressOpt: GetAddressOptions) => Promise<Result>;
 
 const getAddressWrapper =
-  (getAddressFn: Resolver) =>
-  (transport: Transport, opts: GetAddressOptions) => {
+  (getAddressFn: GetAddressFn) => (opts: GetAddressOptions) => {
     const { currency, path, verify } = opts;
-    return getAddressFn(transport, opts)
+    return getAddressFn(opts)
       .then((result) => {
         log("hw", `getAddress ${currency.id} on ${path}`, result);
         return result;
