@@ -25,7 +25,7 @@ function getAddr(opts: GetAddressOptions): Promise<Result> {
   return withDevice("")((transport: Transport) =>
     from(getAddress(transport, opts))
   ).toPromise();
-};
+}
 
 export const makeScanAccounts = ({
   getAccountShape,
