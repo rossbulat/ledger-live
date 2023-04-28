@@ -6,12 +6,16 @@ import {
 import { log } from "@ledgerhq/logs";
 import type { Result, GetAddressOptions } from "../derivation";
 
-export type GetAddressFn = (addressOpt: GetAddressOptions) => Promise<Result>;
+export type GetAddressFn = (
+  deviceId: string,
+  addressOpt: GetAddressOptions
+) => Promise<Result>;
 
 const getAddressWrapper =
-  (getAddressFn: GetAddressFn) => (opts: GetAddressOptions) => {
+  (getAddressFn: GetAddressFn) =>
+  (deviceId: string, opts: GetAddressOptions): Promise<Result> => {
     const { currency, path, verify } = opts;
-    return getAddressFn(opts)
+    return getAddressFn(deviceId, opts)
       .then((result) => {
         log("hw", `getAddress ${currency.id} on ${path}`, result);
         return result;

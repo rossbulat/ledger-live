@@ -15,23 +15,21 @@ import solana from "../families/solana/hw-getAddress";
 import stellar from "../families/stellar/hw-getAddress";
 import tezos from "../families/tezos/hw-getAddress";
 import tron from "../families/tron/hw-getAddress";
-import { of } from "rxjs";
 import type Transport from "@ledgerhq/hw-transport";
 import type {
   Result,
   GetAddressOptions,
 } from "@ledgerhq/coin-framework/derivation";
-import { withDevicePromise } from "../hw/deviceAccess";
+import { Resolver } from "../hw/getAddress/types";
 import * as polkadotSigner from "@ledgerhq/hw-app-polkadot";
 import polkadotResolver from "@ledgerhq/coin-polkadot/hw-getAddress";
-const polkadot = async (
+const polkadot: Resolver = async (
   transport: Transport,
   opts: GetAddressOptions
 ): Promise<Result> => {
-  const signer = await withDevicePromise("", (transport: Transport) =>
-    of(new polkadotSigner.default(transport))
-  );
-  return polkadotResolver(signer)(opts);
+  const signerFactory = (_: string) =>
+    Promise.resolve(new polkadotSigner.default(transport));
+  return polkadotResolver(signerFactory)("", opts);
 };
 
 export default {
