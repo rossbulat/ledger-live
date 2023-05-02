@@ -2685,6 +2685,10 @@
           "title" : "API de Exploradores Experimentais",
           "description" : "Experimente uma versão futura dos exploradores de blockchain da Ledger. Alterar essa configuração poderá afetar o saldo e a sincronização da conta, bem como o recurso de enviar."
         },
+        "experimentalListAppsV2" : {
+          "title" : "Lista de aplicativos experimentais para Minha Ledger",
+          "description" : "Melhoria de desempenho no acesso à Minha Ledger e fluxos inline."
+        },
         "experimentalCountervalues" : {
           "title" : "API de Contravalores Experimentais",
           "description" : "Isso pode fazer com que os contravalores incorretos sejam exibidos nas suas contas."
@@ -2729,7 +2733,12 @@
       "featureFlagsTabGroups" : "Grupos",
       "firebaseProject" : "Projeto Firebase mirado por esta versão:",
       "showBannerDesc" : "Mostrar banner quando os marcadores estiverem desativados",
-      "bannerTitle" : "Marcadores desativados localmente"
+      "bannerTitle" : "Marcadores desativados localmente",
+      "features" : {
+        "firmwareUpdate" : {
+          "headerTitle" : "Debug da atualização de firmware"
+        }
+      }
     }
   },
   "notifications" : {
@@ -2798,7 +2807,8 @@
         "addressVerified" : "Endereço Verificado",
         "verifyAddress" : "Toque aqui para verificar seu endereço",
         "adviceVerify" : "Recomendamos que você sempre verifique seu endereço com seu dispositivo Ledger",
-        "sendWarning" : "Envie somente {{currencyName}} ({{currencyTicker}}) para este endereço. Enviar qualquer outra moeda pode resultar em perda permanente."
+        "sendWarning" : "Envie somente {{currencyName}} ({{currencyTicker}}) para este endereço. Enviar qualquer outra moeda pode resultar em perda permanente.",
+        "dashStakingWarning" : "Certifique-se de não usar esse endereço para receber recompensas de staking"
       },
       "securityVerify" : {
         "title" : "Por segurança, recomendamos verificar este endereço com seu dispositivo Ledger.",
