@@ -2685,6 +2685,10 @@
           "title" : "試験的なエクスプローラーAPI",
           "description" : "Ledgerのブロックチェーンエクスプローラーの新バージョンをお試しいただけます。この設定を変更すると、アカウントの残高と同期、および送金機能に影響を与える可能性があります。"
         },
+        "experimentalListAppsV2" : {
+          "title" : "My Ledger用アプリの試験的リスト",
+          "description" : "My Ledgerアクセスとインラインフローのパフォーマンスの向上。"
+        },
         "experimentalCountervalues" : {
           "title" : "試験的なカウンターバリューAPI",
           "description" : "これにより、アカウントに表示されるカウンター値が不正確になる可能性があります。"
@@ -2729,7 +2733,12 @@
       "featureFlagsTabGroups" : "グループ",
       "firebaseProject" : "対象となるFirebaseプロジェクト：",
       "showBannerDesc" : "フラグがオーバーライドされたときにバナーを表示する",
-      "bannerTitle" : "フラグがローカルでオーバーライドされています"
+      "bannerTitle" : "フラグがローカルでオーバーライドされています",
+      "features" : {
+        "firmwareUpdate" : {
+          "headerTitle" : "ファームウェアのアップデートをデバッグする"
+        }
+      }
     }
   },
   "notifications" : {
@@ -2798,7 +2807,8 @@
         "addressVerified" : "認証済みアドレス",
         "verifyAddress" : "タップしてアドレスを認証",
         "adviceVerify" : "当社では常にLedgerデバイスでアドレス認証することを推奨しています",
-        "sendWarning" : "このアドレスには、 {{currencyName}} ({{currencyTicker}}) のみを送信します。その他の暗号資産を送信すると、資金が永久に失われる可能性があります。"
+        "sendWarning" : "このアドレスには、 {{currencyName}} ({{currencyTicker}}) のみを送信します。その他の暗号資産を送信すると、資金が永久に失われる可能性があります。",
+        "dashStakingWarning" : "このアドレスは、ステーキング報酬の受け取りに使用しないでください。"
       },
       "securityVerify" : {
         "title" : "安全上の理由から、当社ではLedgerデバイスでこのアドレスの認証を推奨しています。",
