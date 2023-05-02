@@ -3761,6 +3761,7 @@
         "title" : "Вы стали разработчиком!",
         "text" : "Добро пожаловать в страну чудес"
       },
+      "userId" : "ID пользователя",
       "debugApps" : "Разрешить отладку",
       "debugAppsDesc" : "Показывать и открывать отладочные приложения на платформе.",
       "experimentalApps" : "Разрешить экспериментальные приложения",
@@ -3790,6 +3791,8 @@
       "runLocalAppOpenButton" : "Открыть",
       "enableLearnStagingUrl" : "Промежуточный URL страницы Образование",
       "enableLearnStagingUrlDesc" : "Включить промежуточный URL-адрес для страницы Образование.",
+      "enableStagingNftMetadataService" : "Служба метаданных NFT на стейджинге",
+      "enableStagingNftMetadataServiceDesc" : "Активируйте службу метаданных NFT на стейджинге и сбросьте кэш этих токенов.",
       "openOnboardingAppInstallDebug" : "Запуск приложения настройки с экраном отладки",
       "openOnboardingAppInstallDebugDesc" : "Открыть экран с компонентами из шага синхронизации приложения настройки."
     },
