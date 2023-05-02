@@ -2685,6 +2685,10 @@
           "title" : "Deneysel Tarayıcılar API'ı",
           "description" : "Ledger'ın blok zinciri tarayıcılarının gelecek bir sürümünü deneyin. Bu ayarın değiştirilmesi, hesap bakiyesi ve senkronizasyonun yanı sıra gönderme özelliğini de etkileyebilir."
         },
+        "experimentalListAppsV2" : {
+          "title" : "Deneysel My Ledger uygulama listesi",
+          "description" : "My Ledger erişimi ve uygulama içi akışlar için performans iyileştirmesi."
+        },
         "experimentalCountervalues" : {
           "title" : "Deneysel karşı değerler API'ı",
           "description" : "Bu, hesaplarınız için görüntülenen karşı değerlerin hatalı gözükmesine neden olabilir."
@@ -2729,7 +2733,12 @@
       "featureFlagsTabGroups" : "Gruplar",
       "firebaseProject" : "Bu sürüm tarafından hedeflenen Firebase projesi:",
       "showBannerDesc" : "Bayraklar geçersiz bırakıldığında banner'ı göster",
-      "bannerTitle" : "Bayraklar yerel olarak geçersiz bırakıldı"
+      "bannerTitle" : "Bayraklar yerel olarak geçersiz bırakıldı",
+      "features" : {
+        "firmwareUpdate" : {
+          "headerTitle" : "Donanım yazılımı güncellemesi için hata ayıklama"
+        }
+      }
     }
   },
   "notifications" : {
@@ -2798,7 +2807,8 @@
         "addressVerified" : "Adres doğrulandı",
         "verifyAddress" : "Adresinizi doğrulamak için buraya dokunun",
         "adviceVerify" : "Adresinizi daima Ledger cihazınız ile doğrulamanızı öneririz",
-        "sendWarning" : "Bu adrese sadece {{currencyName}} ({{currencyTicker}}) gönderin. Başka herhangi bir coin gönderdiğiniz takdirde bu coin'leri kalıcı olarak yitirebilirsiniz."
+        "sendWarning" : "Bu adrese sadece {{currencyName}} ({{currencyTicker}}) gönderin. Başka herhangi bir coin gönderdiğiniz takdirde bu coin'leri kalıcı olarak yitirebilirsiniz.",
+        "dashStakingWarning" : "Lütfen bu adresi staking ödüllerini almak için kullanmayın"
       },
       "securityVerify" : {
         "title" : "Güvenliğiniz açısından bu adresi Ledger cihazınızla doğrulamanızı öneririz.",
@@ -5711,22 +5721,7 @@
       }
     },
     "status" : {
-      "title" : "İlgilenmeniz gereken bir sorun var",
-      "title_plural" : "Dikkatinizi gerektiren bazı sorunlar var",
-      "desc" : {
-        "0" : "An itibarıyla inceleniyorlar ve kısa süre içerisinde çözülecekler.",
-        "1" : "Bu sorunlardan etkilendiyseniz <0>Müşteri Desteği</0> ekibimizle iletişime geçin"
-      },
-      "cta" : {
-        "ok" : "Anladım"
-      },
-      "ok" : {
-        "title" : "Ledger Live çalışır durumda",
-        "desc" : "<0>Sorun mu yaşıyorsunuz? </0><1>Yardım sayfamıza</1> gidin"
-      },
-      "error" : {
-        "title" : "Ledger Live'de bir sorun var"
-      }
+      "header" : "Durum"
     }
   },
   "browseWeb3" : {
