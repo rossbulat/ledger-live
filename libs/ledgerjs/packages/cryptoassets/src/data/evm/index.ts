@@ -14,6 +14,7 @@ import optimism_tokens from "./10/erc20.json";
 import optimism_goerli_tokens from "./420/erc20.json";
 import polygon_tokens from "./137/erc20.json";
 import songbird_tokens from "./19/erc20.json";
+import telos_tokens from "./40/erc20.json";
 import arbitrum_signatures from "./42161/erc20-signatures.json";
 import arbitrum_goerli_signatures from "./421613/erc20-signatures.json";
 import bsc_signatures from "./56/erc20-signatures.json";
@@ -38,6 +39,7 @@ export const tokens = {
   25: cronos_tokens,
   1: ethereum_tokens,
   5: ethereum_goerli_tokens,
+  40: telos_tokens,
   4: ethereum_rinkeby_tokens,
   3: ethereum_ropsten_tokens,
   11155111: ethereum_sepolia_tokens,
