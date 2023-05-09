@@ -33,6 +33,7 @@ const getExplorerApi = (currency: CryptoCurrency) => {
   switch (apiType) {
     case "etherscan":
     case "blockscout":
+    case "teloscan":
       return etherscanLikeApi;
 
     default:
