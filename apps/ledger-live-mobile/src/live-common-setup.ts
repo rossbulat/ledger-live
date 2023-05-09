@@ -99,6 +99,7 @@ setSupportedCurrencies([
   "moonriver",
   "velas_evm",
   "syscoin",
+  "telos",
 ]);
 
 if (Config.VERBOSE) {
