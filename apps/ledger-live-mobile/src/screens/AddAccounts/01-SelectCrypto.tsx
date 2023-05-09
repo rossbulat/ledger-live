@@ -72,6 +72,7 @@ export default function AddAccountsSelectCrypto({ navigation, route }: Props) {
   const moonriver = useFeature("currencyMoonriver");
   const velasEvm = useFeature("currencyVelasEvm");
   const syscoin = useFeature("currencySyscoin");
+  const telos = useFeature("currencyTelos");
 
   const featureFlaggedCurrencies = useMemo(
     () => ({
@@ -95,6 +96,7 @@ export default function AddAccountsSelectCrypto({ navigation, route }: Props) {
       moonriver,
       velas_evm: velasEvm,
       syscoin,
+      telos,
     }),
     [
       avaxCChain,
@@ -117,6 +119,7 @@ export default function AddAccountsSelectCrypto({ navigation, route }: Props) {
       onomy,
       persistence,
       quicksilver,
+      telos,
     ],
   );
 
