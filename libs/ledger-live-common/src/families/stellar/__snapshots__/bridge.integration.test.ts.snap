@@ -6,6 +6,7 @@ Array [
     "balance": "341064600",
     "currencyId": "stellar",
     "derivationMode": "sep5",
+    "feesCurrencyId": undefined,
     "freshAddress": "GAT4LBXYJGJJJRSNK74NPFLO55CDDXSYVMQODSEAAH3M6EY4S7LPH5GV",
     "freshAddressPath": "44'/148'/0'",
     "freshAddresses": Array [
@@ -33,6 +34,7 @@ Array [
     "balance": "89999825",
     "currencyId": "stellar",
     "derivationMode": "sep5",
+    "feesCurrencyId": undefined,
     "freshAddress": "GAIXIJBMYPTSF2CDVQ35WOTULCLZIE4W2SDEK3RQGAA3A22BPWY7R53Z",
     "freshAddressPath": "44'/148'/1'",
     "freshAddresses": Array [
@@ -60,6 +62,7 @@ Array [
     "balance": "59999325",
     "currencyId": "stellar",
     "derivationMode": "sep5",
+    "feesCurrencyId": undefined,
     "freshAddress": "GCDDN6T2LJN3T7SPWJQV6BCCL5KNY5GBN7X4CMSZLDEXDHXAH32TOAHS",
     "freshAddressPath": "44'/148'/2'",
     "freshAddresses": Array [
@@ -87,6 +90,7 @@ Array [
     "balance": "20145800",
     "currencyId": "stellar",
     "derivationMode": "sep5",
+    "feesCurrencyId": undefined,
     "freshAddress": "GAHQKL7UW5DSNJXWNA4ASJ6D2I7JYFWVHDFWYJZK3WDR4BUTG27K2PWC",
     "freshAddressPath": "44'/148'/3'",
     "freshAddresses": Array [
@@ -114,6 +118,7 @@ Array [
     "balance": "10000000",
     "currencyId": "stellar",
     "derivationMode": "sep5",
+    "feesCurrencyId": undefined,
     "freshAddress": "GBQMOU2WYJUP6AKY53FFKZJGQMDWCMTWSOUTZ5DVIAQPVW7AJUHSX2M5",
     "freshAddressPath": "44'/148'/4'",
     "freshAddresses": Array [
@@ -141,6 +146,7 @@ Array [
     "balance": "0",
     "currencyId": "stellar",
     "derivationMode": "sep5",
+    "feesCurrencyId": undefined,
     "freshAddress": "GAJEKFXY76YWDSKJESDOKS2EGKRMCHSIC5AU32SU7OF54E5VVREUHXLH",
     "freshAddressPath": "44'/148'/5'",
     "freshAddresses": Array [
