@@ -13,7 +13,8 @@ export function isWalletAPISupportedCurrency(
   currency: Currency
 ): currency is WalletAPISupportedCurrency {
   if (isCryptoCurrency(currency)) {
-    return includes(WALLET_API_FAMILIES, currency.family);
+    // Todo: Paraswap UI won't render because `useCurrencies` returns empty array for some reasons. Need to investigate.
+    return includes([...WALLET_API_FAMILIES, "evm"], currency.family);
   }
   if (isTokenCurrency(currency)) {
     return includes(WALLET_API_FAMILIES, currency.parentCurrency.family);

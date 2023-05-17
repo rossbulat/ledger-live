@@ -2238,7 +2238,7 @@ export const cryptocurrenciesById: Record<CryptoCurrencyId, CryptoCurrency> = {
     ticker: "MATIC",
     scheme: "polygon",
     color: "#6d29de",
-    family: "ethereum",
+    family: "evm",
     ethereumLikeInfo: {
       baseChain: "mainnet",
       chainId: 137,
@@ -3708,6 +3708,8 @@ export const cryptocurrenciesById: Record<CryptoCurrencyId, CryptoCurrency> = {
     ticker: "FTM",
     scheme: "fantom",
     color: "#1969ff",
+    // Todo: temporary set to test evm family
+    // https://github.com/LedgerHQ/ledger-live/pull/3443
     family: "evm",
     units: ethereumUnits("FTM", "FTM"),
     ethereumLikeInfo: {

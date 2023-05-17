@@ -1,5 +1,5 @@
 import { EthereumTransaction as WalletAPIEthereumTransaction } from "@ledgerhq/wallet-api-core";
-import { Account, AccountLike } from "@ledgerhq/types-live";
+import { Account } from "@ledgerhq/types-live";
 import {
   AreFeesProvided,
   ConvertToLiveTransaction,
@@ -8,7 +8,6 @@ import {
 import { Transaction as EthTx } from "./types";
 import { Transaction as EvmTx } from "../evm/types";
 import { isTokenAccount } from "../../account";
-import { createTransaction } from "../evm/createTransaction";
 
 const CAN_EDIT_FEES = true;
 
@@ -33,7 +32,7 @@ const convertToLiveTransaction: ConvertToLiveTransaction<
           ...tx,
           userGasLimit: tx.gasLimit,
         }
-      : convertToEvmLiveTransaction(tx, account);
+      : convertToEvmLiveTransaction(tx);
 
   return hasFeesProvided ? { ...liveTx, feesStrategy: "custom" } : liveTx;
 };
@@ -52,11 +51,10 @@ const getWalletAPITransactionSignFlowInfos: GetWalletAPITransactionSignFlowInfos
 export default { getWalletAPITransactionSignFlowInfos };
 
 function convertToEvmLiveTransaction(
-  tx: WalletAPIEthereumTransaction,
-  account: AccountLike
+  tx: WalletAPIEthereumTransaction
 ): Partial<EvmTx> {
-  const liveTx: Partial<EvmTx> = {
-    ...createTransaction(account),
+  const params = {
+    family: "evm" as const,
     nonce: tx.nonce,
     amount: tx.amount,
     recipient: tx.recipient,
@@ -64,14 +62,10 @@ function convertToEvmLiveTransaction(
     gasLimit: tx.gasLimit,
   };
 
-  // EIP-1559 or Legacy?
-  if (tx.maxPriorityFeePerGas || tx.maxFeePerGas) {
-    liveTx.maxPriorityFeePerGas = tx.maxPriorityFeePerGas;
-    liveTx.maxFeePerGas = tx.maxFeePerGas;
-  } else {
-    liveTx.type = 0;
-    liveTx.gasPrice = tx.gasPrice;
-  }
-
-  return liveTx;
+  return tx.maxPriorityFeePerGas || tx.maxFeePerGas
+    ? {
+        ...params,
+        type: 2,
+      }
+    : { ...params, type: 0 };
 }
