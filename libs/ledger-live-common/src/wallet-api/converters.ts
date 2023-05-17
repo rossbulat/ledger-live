@@ -95,11 +95,15 @@ export function currencyToWalletAPICurrency(
 export const getWalletAPITransactionSignFlowInfos: GetWalletAPITransactionSignFlowInfos<
   WalletAPITransaction,
   Transaction
-> = (tx) => {
+> = ({ tx, account, parentAccount }) => {
   const family = byFamily[tx.family];
 
   if (family) {
-    return family.getWalletAPITransactionSignFlowInfos(tx);
+    return family.getWalletAPITransactionSignFlowInfos({
+      tx,
+      account,
+      parentAccount,
+    });
   }
 
   return {
