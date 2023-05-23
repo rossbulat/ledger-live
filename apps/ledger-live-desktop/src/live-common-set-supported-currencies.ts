@@ -71,4 +71,6 @@ setSupportedCurrencies([
   "moonriver",
   "velas_evm",
   "syscoin",
+  "ethereum_as_evm_test_only",
+  "polygon_as_evm_test_only",
 ]);
