@@ -160,25 +160,20 @@ export const mergeNfts = (
   });
 
   // copying the argument to avoid mutating it
-  const nfts = oldNfts.slice();
-  for (let i = 0; i < nfts.length; i++) {
-    const nft = nfts[i];
+  const oldNftsCopy = oldNfts.slice();
+  for (let i = 0; i < oldNftsCopy.length; i++) {
+    const oldNft = oldNftsCopy[i];
+    if (!newNftsPerId[oldNft.id]) continue;
 
-    // The NFTs are the same, do don't anything
-    if (!newNftsPerId[nft.id]) {
-      nfts.splice(i, 1);
-      i--;
-    } else if (!isEqual(nft, newNftsPerId[nft.id])) {
+    if (!isEqual(newNftsPerId[oldNft.id], oldNft)) {
       // Use the new NFT instead
-      nfts[i] = newNftsPerId[nft.id];
+      oldNftsCopy[i] = newNftsPerId[oldNft.id];
     }
-
-    // Delete it from the newNfts to keep only the un-added ones at the end
-    delete newNftsPerId[nft.id];
+    delete newNftsPerId[oldNft.id];
   }
 
   // Prepending newNfts to respect nfts's newest to oldest order
-  return Object.values(newNftsPerId).concat(nfts);
+  return Object.values(newNftsPerId).concat(oldNftsCopy);
 };
 
 export const makeSync =
