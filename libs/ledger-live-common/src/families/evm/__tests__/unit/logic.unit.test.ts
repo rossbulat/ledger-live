@@ -1,10 +1,15 @@
 import BigNumber from "bignumber.js";
+import { getEnv, setEnv } from "@ledgerhq/live-env";
 import { TokenCurrency } from "@ledgerhq/types-cryptoassets";
 import * as cryptoAssetsTokens from "@ledgerhq/cryptoassets/tokens";
 import { getCryptoCurrencyById, getTokenById } from "@ledgerhq/cryptoassets";
-import { EvmTransactionEIP1559, EvmTransactionLegacy } from "../types";
-import { makeAccount, makeOperation, makeTokenAccount } from "../testUtils";
-import * as RPC_API from "../api/rpc.common";
+import { EvmTransactionEIP1559, EvmTransactionLegacy } from "../../types";
+import * as RPC_API from "../../api/rpc.common";
+import {
+  makeAccount,
+  makeOperation,
+  makeTokenAccount,
+} from "../fixtures/common.fixtures";
 import {
   eip1559TransactionHasFees,
   getAdditionalLayer2Fees,
@@ -12,7 +17,7 @@ import {
   getSyncHash,
   legacyTransactionHasFees,
   mergeSubAccounts,
-} from "../logic";
+} from "../../logic";
 
 describe("EVM Family", () => {
   describe("logic.ts", () => {
@@ -293,7 +298,9 @@ describe("EVM Family", () => {
           ),
           balance: new BigNumber(1),
         };
-        const account = makeAccount("0xkvn", getCryptoCurrencyById("ethereum"));
+        const account = {
+          ...makeAccount("0xkvn", getCryptoCurrencyById("ethereum")),
+        };
         delete account.subAccounts;
 
         const newSubAccounts = mergeSubAccounts(account, [tokenAccount]);
@@ -327,8 +334,14 @@ describe("EVM Family", () => {
     describe("getSyncHash", () => {
       const currency = getCryptoCurrencyById("ethereum");
 
+      let oldEnv;
+      beforeAll(() => {
+        oldEnv = getEnv("NFT_CURRENCIES");
+      });
+
       afterEach(() => {
         jest.restoreAllMocks();
+        setEnv("NFT_CURRENCIES", oldEnv);
       });
 
       it("should provide a valid sha256 hash", () => {
@@ -398,6 +411,15 @@ describe("EVM Family", () => {
             ];
           });
         expect(getSyncHash(currency)).not.toEqual(getSyncHash(currency));
+      });
+
+      it("should provide a new hash if nft support is activated or not", () => {
+        setEnv("NFT_CURRENCIES", "");
+        const hash1 = getSyncHash(currency);
+        setEnv("NFT_CURRENCIES", currency.id);
+        const hash2 = getSyncHash(currency);
+
+        expect(hash1).not.toEqual(hash2);
       });
     });
   });

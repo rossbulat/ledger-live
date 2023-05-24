@@ -1,23 +1,24 @@
 import BigNumber from "bignumber.js";
-import {
-  Account,
-  Operation,
-  SubAccount,
-  TokenAccount,
-} from "@ledgerhq/types-live";
+import { encodeOperationId } from "@ledgerhq/coin-framework/operation";
 import { CryptoCurrency, TokenCurrency } from "@ledgerhq/types-cryptoassets";
+import {
+  decodeAccountId,
+  decodeTokenAccountId,
+  encodeTokenAccountId,
+  shortAddressPreview,
+} from "@ledgerhq/coin-framework/account/index";
 import {
   DerivationMode,
   getDerivationScheme,
   runDerivationScheme,
 } from "@ledgerhq/coin-framework/derivation";
 import {
-  decodeAccountId,
-  decodeTokenAccountId,
-  encodeTokenAccountId,
-  shortAddressPreview,
-} from "../../account";
-import { encodeOperationId } from "../../operation";
+  Account,
+  Operation,
+  ProtoNFT,
+  SubAccount,
+  TokenAccount,
+} from "@ledgerhq/types-live";
 
 export const makeAccount = (
   address: string,
@@ -56,6 +57,7 @@ export const makeAccount = (
     currency,
     unit: currency.units[0],
     index,
+    nfts: [],
     freshAddress: xpubOrAddress,
     freshAddressPath,
     freshAddresses: [],
@@ -83,7 +85,7 @@ export const makeAccount = (
     },
   };
 
-  return account;
+  return Object.freeze(account);
 };
 
 export const makeTokenAccount = (
@@ -95,7 +97,7 @@ export const makeTokenAccount = (
 
   const tokenAccountId = encodeTokenAccountId(account.id, tokenCurrency);
 
-  return {
+  return Object.freeze({
     type: "TokenAccount",
     id: tokenAccountId,
     parentId: account.id,
@@ -122,7 +124,7 @@ export const makeTokenAccount = (
       },
     },
     swapHistory: [],
-  };
+  });
 };
 
 export const makeOperation = (partialOp?: Partial<Operation>): Operation => {
@@ -134,7 +136,7 @@ export const makeOperation = (partialOp?: Partial<Operation>): Operation => {
   );
   const hash = partialOp?.hash ?? "0xhash";
   const type = partialOp?.type ?? "OUT";
-  return {
+  return Object.freeze({
     id: encodeOperationId(accountId, hash, type),
     hash,
     type,
@@ -149,5 +151,16 @@ export const makeOperation = (partialOp?: Partial<Operation>): Operation => {
     date: new Date(),
     extra: {},
     ...partialOp,
-  };
+  });
 };
+
+export const makeNft = (partialNft?: Partial<ProtoNFT>): ProtoNFT =>
+  Object.freeze({
+    id: "NFT-ID",
+    tokenId: "1",
+    amount: new BigNumber(1),
+    contract: "0xNftContract",
+    standard: "ERC721",
+    currencyId: "ethereum",
+    ...partialNft,
+  });
